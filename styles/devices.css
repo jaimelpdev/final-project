@@ -1,0 +1,179 @@
+li {
+  list-style-type: none;
+}
+
+#devicesDetails {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0.7rem;
+}
+
+.devicesDetailsContainer,
+form {
+  background-color: rgb(75, 75, 75);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  max-width: 35rem;
+  margin: 2rem 1rem;
+}
+
+.devicesDescriptionContainer {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+#devicesImage {
+  width: 30rem !important;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+#devicesSpecifications {
+  text-align: left;
+  margin-left: 3.5rem;
+}
+
+form label {
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
+form select {
+  width: 45%;
+  margin: 0.2rem 0rem 1rem 2rem;
+}
+
+form select,
+form button {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+form select:focus,
+form button:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+form button {
+  justify-self: center;
+  display: flex;
+}
+
+/* Media Queries to make it responsive */
+@media (max-width: 768px) {
+  .subtitle {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .subtitleText {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  p {
+    width: 90%;
+    font-size: 1rem;
+    margin: 0 auto;
+  }
+
+  .devicesDetailsContainer,
+  form {
+    max-width: 90%;
+    padding: 1.5rem;
+    margin: 1rem auto;
+  }
+
+  #devicesDetails {
+    margin: 1rem auto;
+  }
+
+  #devicesImage {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .devicesDescriptionContainer {
+    text-align: left;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  #devicesSpecifications {
+    margin-left: 0;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  h2#title {
+    text-align: center;
+    margin: 1rem auto;
+    font-size: 1.5rem;
+  }
+}
+
+/* Media Queries to smaller displays */
+@media (max-width: 480px) {
+  .subtitle {
+    font-size: 0.875rem;
+    text-align: center;
+  }
+
+  .subtitleText {
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  form label,
+  form select,
+  form button {
+    font-size: 0.75rem;
+  }
+
+  .cart-icon {
+    font-size: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .cart-dropdown {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .cart-dropdown ul li {
+    padding: 0.25rem;
+    font-size: 0.875rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cart-dropdown ul li .quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .cart-dropdown ul li .remove {
+    padding: 0.25rem;
+    margin-top: 0.5rem;
+    align-self: center;
+  }
+
+  h2#title {
+    text-align: center;
+    margin: 1rem auto;
+    font-size: 1.25rem;
+  }
+}

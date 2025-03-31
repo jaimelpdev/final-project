@@ -1,0 +1,284 @@
+{
+  "notebooks": [
+    {
+      "id": 1,
+      "name": "MacBook Air",
+      "brand": "Apple",
+      "image": "/imgs/notebooks/apple-macbook-air.webp",
+      "description": "The Apple MacBook Air is a lightweight and portable laptop known for its sleek design, long battery life, and reliable performance. It is ideal for users who need a powerful yet portable computing solution.",
+      "specifications": {
+        "processor": "Apple M3",
+        "ram": "8GB",
+        "storage": "256GB SSD",
+        "display": "13.3-inch Retina"
+      },
+      "price": 999
+    },
+    {
+      "id": 2,
+      "name": "MacBook Air M1",
+      "brand": "Apple",
+      "image": "/imgs/notebooks/apple-macbook-air-m1.webp",
+      "description": "The Apple MacBook Air M1 is a lightweight and portable laptop known for its sleek design, long battery life, and powerful M1 chip. It is ideal for users who need a powerful yet portable computing solution.",
+      "specifications": {
+        "processor": "Apple M1",
+        "ram": "8GB",
+        "storage": "256GB SSD",
+        "display": "13.3-inch Retina"
+      },
+      "price": 1099
+    },
+    {
+      "id": 3,
+      "name": "MacBook Pro",
+      "brand": "Apple",
+      "image": "/imgs/notebooks/apple-macbook-pro.webp",
+      "description": "The Apple MacBook Pro is a high-performance laptop known for its sleek design, powerful hardware, and advanced features. It is ideal for professionals and creatives seeking a reliable and powerful computing solution.",
+      "specifications": {
+        "processor": "Apple M4",
+        "ram": "16GB",
+        "storage": "512GB SSD",
+        "display": "13.3-inch Retina"
+      },
+      "price": 1299
+    },
+    {
+      "id": 4,
+      "name": "MacBook Pro 16",
+      "brand": "Apple",
+      "image": "/imgs/notebooks/apple-macbook-pro-16.webp",
+      "description": "The Apple MacBook Pro 16 is a high-performance laptop known for its large display, powerful hardware, and advanced features. It is ideal for professionals and creatives who need a reliable and powerful computing solution.",
+      "specifications": {
+        "processor": "Apple M4+",
+        "ram": "16GB",
+        "storage": "1TB SSD",
+        "display": "16-inch Retina"
+      },
+      "price": 2399
+    },
+    {
+      "id": 5,
+      "name": "Inspiron 15",
+      "brand": "Dell",
+      "image": "/imgs/notebooks/dell-inspiron-15.webp",
+      "description": "The Dell Inspiron 15 is a versatile laptop known for its affordability, solid performance, and wide range of features. It is suitable for both work and entertainment purposes.",
+      "specifications": {
+        "processor": "Intel Core i5",
+        "ram": "8GB",
+        "storage": "256GB SSD",
+        "display": "15.6-inch FHD"
+      },
+      "price": 599
+    },
+    {
+      "id": 6,
+      "name": "Inspiron 14",
+      "brand": "Dell",
+      "image": "/imgs/notebooks/dell-inspiron-14.webp",
+      "description": "The Dell Inspiron 14 is a versatile laptop known for its affordability, solid performance, and wide range of features. It is suitable for both work and entertainment purposes.",
+      "specifications": {
+        "processor": "Intel Core i5",
+        "ram": "8GB",
+        "storage": "256GB SSD",
+        "display": "14-inch FHD"
+      },
+      "price": 549
+    },
+    {
+      "id": 7,
+      "name": "XPS 13",
+      "brand": "Dell",
+      "image": "/imgs/notebooks/dell-xps-13.webp",
+      "description": "The Dell XPS 13 is a premium ultrabook known for its compact design, stunning display, and powerful performance. It is ideal for users seeking a high-quality laptop for both work and entertainment.",
+      "specifications": {
+        "processor": "Intel Core i7",
+        "ram": "16GB",
+        "storage": "512GB SSD",
+        "display": "13.4-inch FHD+"
+      },
+      "price": 1399
+    },
+    {
+      "id": 8,
+      "name": "XPS 15",
+      "brand": "Dell",
+      "image": "/imgs/notebooks/dell-xps-15.webp",
+      "description": "The Dell XPS 15 is a premium laptop known for its stunning display, powerful performance, and sleek design. It is suitable for users who need a high-quality laptop for both work and entertainment.",
+      "specifications": {
+        "processor": "Intel Core i7",
+        "ram": "16GB",
+        "storage": "512GB SSD",
+        "display": "15.6-inch FHD+"
+      },
+      "price": 1799
+    },
+    {
+      "id": 9,
+      "name": "ThinkPad T14",
+      "brand": "Lenovo",
+      "image": "/imgs/notebooks/lenovo-thinkpad-t14.webp",
+      "description": "The Lenovo ThinkPad T14 is a business laptop known for its durability, performance, and advanced security features. It is designed for professionals who need a reliable and secure computing solution.",
+      "specifications": {
+        "processor": "Intel Core i5",
+        "ram": "8GB",
+        "storage": "256GB SSD",
+        "display": "14-inch FHD"
+      },
+      "price": 999
+    },
+    {
+      "id": 10,
+      "name": "ThinkPad L14",
+      "brand": "Lenovo",
+      "image": "/imgs/notebooks/lenovo-thinkpad-l14.webp",
+      "description": "The Lenovo ThinkPad L14 is a business laptop known for its durability, performance, and advanced security features. It is designed for professionals who need a reliable and secure computing solution.",
+      "specifications": {
+        "processor": "Intel Core i5",
+        "ram": "8GB",
+        "storage": "256GB SSD",
+        "display": "14-inch FHD"
+      },
+      "price": 899
+    },
+    {
+      "id": 11,
+      "name": "ThinkPad X1 Carbon",
+      "brand": "Lenovo",
+      "image": "/imgs/notebooks/lenovo-thinkpad-x1-carbon.webp",
+      "description": "The Lenovo ThinkPad X1 Carbon is a business laptop known for its durability, performance, and advanced features. It is ideal for professionals seeking a reliable and productive computing solution.",
+      "specifications": {
+        "processor": "Intel Core i7",
+        "ram": "16GB",
+        "storage": "512GB SSD",
+        "display": "14-inch FHD"
+      },
+      "price": 1499
+    },
+    {
+      "id": 12,
+      "name": "ThinkPad X1 Yoga",
+      "brand": "Lenovo",
+      "image": "/imgs/notebooks/lenovo-thinkpad-x1-yoga.webp",
+      "description": "The Lenovo ThinkPad X1 Yoga is a convertible business laptop known for its durability, performance, and advanced features. It is designed for professionals who need a versatile and reliable computing solution.",
+      "specifications": {
+        "processor": "Intel Core i7",
+        "ram": "16GB",
+        "storage": "512GB SSD",
+        "display": "14-inch FHD"
+      },
+      "price": 1599
+    },
+    {
+      "id": 13,
+      "name": "Surface Go 2",
+      "brand": "Microsoft",
+      "image": "/imgs/notebooks/microsoft-surface-go-2.webp",
+      "description": "The Microsoft Surface Go 2 is a compact and portable 2-in-1 device known for its versatility, high-resolution display, and solid performance. It is ideal for users who need a flexible and portable computing solution.",
+      "specifications": {
+        "processor": "Intel Pentium Gold",
+        "ram": "4GB",
+        "storage": "64GB eMMC",
+        "display": "10.5-inch PixelSense"
+      },
+      "price": 399
+    },
+    {
+      "id": 14,
+      "name": "Surface Pro 7",
+      "brand": "Microsoft",
+      "image": "/imgs/notebooks/microsoft-surface-pro-7.webp",
+      "description": "The Microsoft Surface Pro 7 is a versatile 2-in-1 device known for its portability, high-resolution display, and powerful performance. It is ideal for users who need a flexible computing solution for both work and entertainment.",
+      "specifications": {
+        "processor": "Intel Core i5",
+        "ram": "8GB",
+        "storage": "128GB SSD",
+        "display": "12.3-inch PixelSense"
+      },
+      "price": 749
+    },
+    {
+      "id": 15,
+      "name": "Surface Laptop 4",
+      "brand": "Microsoft",
+      "image": "/imgs/notebooks/microsoft-surface-laptop-4.webp",
+      "description": "The Microsoft Surface Laptop 4 is a premium laptop known for its elegant design, high-resolution display, and powerful performance. It is ideal for users seeking a high-quality laptop for both work and entertainment.",
+      "specifications": {
+        "processor": "Intel Core i7",
+        "ram": "16GB",
+        "storage": "512GB SSD",
+        "display": "13.5-inch PixelSense"
+      },
+      "price": 1299
+    },
+    {
+      "id": 16,
+      "name": "Surface Book 3",
+      "brand": "Microsoft",
+      "image": "/imgs/notebooks/microsoft-surface-book-3.webp",
+      "description": "The Microsoft Surface Book 3 is a high-performance 2-in-1 device known for its powerful hardware, detachable design, and high-resolution display. It is ideal for users who need a flexible and powerful computing solution.",
+      "specifications": {
+        "processor": "Intel Core i7",
+        "ram": "16GB",
+        "storage": "512GB SSD",
+        "display": "13.5-inch PixelSense"
+      },
+      "price": 1599
+    },
+    {
+      "id": 17,
+      "name": "ZenBook 14",
+      "brand": "ASUS",
+      "image": "/imgs/notebooks/asus-zenbook-14.webp",
+      "description": "The ASUS ZenBook 14 is a premium ultrabook known for its sleek design, stunning display, and powerful performance. It is suitable for users who need a high-quality laptop for both work and entertainment.",
+      "specifications": {
+        "processor": "Intel Core i7",
+        "ram": "16GB",
+        "storage": "512GB SSD",
+        "display": "14-inch FHD"
+      },
+      "price": 1199
+    },
+    {
+      "id": 18,
+      "name": "VivoBook S15",
+      "brand": "ASUS",
+      "image": "/imgs/notebooks/asus-vivobook-s15.webp",
+      "description": "The ASUS VivoBook S15 is a versatile laptop known for its vibrant display, solid performance, and stylish design. It is suitable for users who need a flexible and high-quality laptop for various tasks.",
+      "specifications": {
+        "processor": "Intel Core i5",
+        "ram": "8GB",
+        "storage": "256GB SSD",
+        "display": "15.6-inch FHD"
+      },
+      "price": 699
+    },
+    {
+      "id": 19,
+      "name": "ROG Zephyrus G14",
+      "brand": "ASUS",
+      "image": "/imgs/notebooks/asus-rog-zephyrus-g14.webp",
+      "description": "The ASUS ROG Zephyrus G14 is a gaming laptop known for its powerful hardware, compact design, and high-refresh-rate display. It is suitable for gamers who need a high-performance laptop for gaming and entertainment.",
+      "specifications": {
+        "processor": "AMD Ryzen 9",
+        "ram": "16GB",
+        "storage": "1TB SSD",
+        "display": "14-inch FHD 120Hz"
+      },
+      "price": 1499
+    },
+    {
+      "id": 20,
+      "name": "TUF Gaming A15",
+      "brand": "ASUS",
+      "image": "/imgs/notebooks/asus-tuf-gaming-a15.webp",
+      "description": "The ASUS TUF Gaming A15 is a gaming laptop known for its durable build, powerful performance, and high-refresh-rate display. It is suitable for gamers who need a reliable and high-performance laptop for gaming and entertainment.",
+      "specifications": {
+        "processor": "AMD Ryzen 7",
+        "ram": "16GB",
+        "storage": "512GB SSD",
+        "display": "15.6-inch FHD 144Hz"
+      },
+      "price": 1299
+    }
+  ]
+}

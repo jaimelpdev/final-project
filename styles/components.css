@@ -1,0 +1,25 @@
+#title {
+    margin: 2rem 0 !important;
+    text-align: center !important;
+}
+
+div {
+text-align: center;
+}
+
+img {
+    height: 7rem;
+    width: auto !important;
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+
+p {
+    margin-top: 0.3rem;
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    text-align: center;
+}

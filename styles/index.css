@@ -1,0 +1,169 @@
+.subtitle {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.presentationText {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: white;
+}
+
+p {
+  text-align: justify;
+  justify-content: center;
+  padding: 1rem;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  color: #ffffff;
+  width: 25rem;
+}
+
+.offers {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+}
+
+.offersImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.offersText {
+  width: 20%;
+  margin: 0 1rem;
+}
+
+.featured {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+}
+
+.featuredImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.subtitleTextContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.subtitleTextLeft,
+.subtitleTextRight,
+.subtitleTextCenter {
+  width: 20%;
+  font-size: 1.2rem;
+  text-align: justify !important;
+}
+
+.subtitleTextLeft {
+  text-align: center;
+  margin-left: 17rem;
+  margin-right: 6.5rem;
+}
+
+.subtitleTextCenter {
+  text-align: center;
+  margin: 0;
+}
+
+.subtitleTextRight {
+  text-align: center;
+  margin-right: 16rem;
+}
+
+img {
+  width: auto !important;
+  height: 15rem !important;
+}
+
+img:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+/* Media Queries for small screens */
+@media (max-width: 768px) {
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .presentationText {
+    font-size: 0.8rem;
+  }
+
+  p {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .presentation {
+    flex-direction: column;
+  }
+
+  .presentationImg img {
+    width: 80%;
+  }
+
+  .presentationText {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .offers {
+      flex-direction: row;
+    }
+  }
+
+  .subtitleTextContainer {
+    flex-direction: column;
+  }
+
+  .subtitleTextLeft,
+  .subtitleTextRight,
+  .subtitleTextCenter {
+    width: 100%;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+  }
+
+  .subtitleTextLeft {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .subtitleTextRight {
+    margin-right: 0;
+  }
+
+  .header {
+    padding: 1rem;
+  }
+
+  .headerCenter {
+    text-align: center;
+    padding-right: 0;
+  }
+
+  .pageLogo {
+    width: 50%;
+    margin: 0 auto;
+  }
+}

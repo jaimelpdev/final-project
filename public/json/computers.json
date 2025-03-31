@@ -1,0 +1,284 @@
+{
+  "computers": [
+    {
+      "id": 1,
+      "name": "Inspiron 3880",
+      "brand": "Dell",
+      "image": "/imgs/computers/dell_inspiron_3880.webp",
+      "description": "The Dell Inspiron 3880 is a reliable desktop known for its powerful performance and versatility. It is ideal for users who need a dependable computing solution for both work and entertainment.",
+      "specifications": {
+        "processor": "Intel Core i5",
+        "ram": "8GB",
+        "storage": "1TB HDD",
+        "graphics": "Intel UHD Graphics 630"
+      },
+      "price": 500
+    },
+    {
+      "id": 2,
+      "name": "Pavilion TP01",
+      "brand": "HP",
+      "image": "/imgs/computers/hp_pavilion_tp01.webp",
+      "description": "The HP Pavilion TP01 is a versatile desktop designed for everyday use. It offers solid performance and a range of features suitable for both work and entertainment.",
+      "specifications": {
+        "processor": "AMD Ryzen 5",
+        "ram": "16GB",
+        "storage": "512GB SSD",
+        "graphics": "AMD Radeon Graphics"
+      },
+      "price": 600
+    },
+    {
+      "id": 3,
+      "name": "IdeaCentre 5",
+      "brand": "Lenovo",
+      "image": "/imgs/computers/lenovo_ideacentre_5.webp",
+      "description": "The Lenovo IdeaCentre 5 is a sleek and powerful desktop ideal for home and office use. It combines performance and style, making it a great choice for various tasks.",
+      "specifications": {
+        "processor": "Intel Core i7",
+        "ram": "16GB",
+        "storage": "1TB HDD + 256GB SSD",
+        "graphics": "NVIDIA GeForce GTX 1650"
+      },
+      "price": 700
+    },
+    {
+      "id": 4,
+      "name": "Aspire TC-895",
+      "brand": "Acer",
+      "image": "/imgs/computers/acer_aspire_tc_895.webp",
+      "description": "The Acer Aspire TC-895 is a compact desktop known for its robust performance. It is suitable for users who need a reliable and space-saving computing solution.",
+      "specifications": {
+        "processor": "Intel Core i5",
+        "ram": "12GB",
+        "storage": "512GB SSD",
+        "graphics": "Intel UHD Graphics 630"
+      },
+      "price": 550
+    },
+    {
+      "id": 5,
+      "name": "ROG Strix GA15",
+      "brand": "ASUS",
+      "image": "/imgs/computers/asus_rog_strix_ga15.webp",
+      "description": "The ASUS ROG Strix GA15 is a gaming desktop with high-end performance. It is designed for gamers who need a powerful and reliable system for gaming and entertainment.",
+      "specifications": {
+        "processor": "AMD Ryzen 7",
+        "ram": "16GB",
+        "storage": "1TB SSD",
+        "graphics": "NVIDIA GeForce RTX 2060"
+      },
+      "price": 1200
+    },
+    {
+      "id": 6,
+      "name": "XPS 8940",
+      "brand": "Dell",
+      "image": "/imgs/computers/dell_xps_8940.webp",
+      "description": "The Dell XPS 8940 is a high-performance desktop designed for demanding tasks. It offers powerful hardware and advanced features for users who need a reliable computing solution.",
+      "specifications": {
+        "processor": "Intel Core i7",
+        "ram": "32GB",
+        "storage": "1TB SSD",
+        "graphics": "NVIDIA GeForce GTX 1660 Ti"
+      },
+      "price": 1300
+    },
+    {
+      "id": 7,
+      "name": "Envy TE01",
+      "brand": "HP",
+      "image": "/imgs/computers/hp_envy_te01.webp",
+      "description": "The HP Envy TE01 is a premium desktop with powerful features. It is ideal for users who need a high-performance system for both work and entertainment.",
+      "specifications": {
+        "processor": "Intel Core i7",
+        "ram": "16GB",
+        "storage": "1TB HDD + 256GB SSD",
+        "graphics": "NVIDIA GeForce GTX 1660 Super"
+      },
+      "price": 1100
+    },
+    {
+      "id": 8,
+      "name": "Legion T5",
+      "brand": "Lenovo",
+      "image": "/imgs/computers/lenovo_legion_t5.webp",
+      "description": "The Lenovo Legion T5 is a gaming desktop with top-notch performance. It is designed for gamers who need a powerful and reliable system for gaming and entertainment.",
+      "specifications": {
+        "processor": "AMD Ryzen 7",
+        "ram": "16GB",
+        "storage": "1TB SSD",
+        "graphics": "NVIDIA GeForce RTX 2070"
+      },
+      "price": 1400
+    },
+    {
+      "id": 9,
+      "name": "Predator Orion 3000",
+      "brand": "Acer",
+      "image": "/imgs/computers/acer_predator_orion_3000.webp",
+      "description": "The Acer Predator Orion 3000 is a gaming desktop with exceptional performance. It is suitable for gamers who need a high-performance system for gaming and entertainment.",
+      "specifications": {
+        "processor": "Intel Core i7",
+        "ram": "16GB",
+        "storage": "1TB SSD",
+        "graphics": "NVIDIA GeForce RTX 2060"
+      },
+      "price": 1300
+    },
+    {
+      "id": 10,
+      "name": "ROG Strix GA35",
+      "brand": "ASUS",
+      "image": "/imgs/computers/asus_rog_strix_ga35.webp",
+      "description": "The ASUS ROG Strix GA35 is a high-end gaming desktop with superior performance. It is designed for gamers who need a powerful and reliable system for gaming and entertainment.",
+      "specifications": {
+        "processor": "AMD Ryzen 9",
+        "ram": "32GB",
+        "storage": "2TB SSD",
+        "graphics": "NVIDIA GeForce RTX 4080"
+      },
+      "price": 2000
+    },
+    {
+      "id": 11,
+      "name": "Inspiron 3881",
+      "brand": "Dell",
+      "image": "/imgs/computers/dell_inspiron_3881.webp",
+      "description": "The Dell Inspiron 3881 is a reliable desktop with updated features. It is ideal for users who need a dependable computing solution for both work and entertainment.",
+      "specifications": {
+        "processor": "Intel Core i3",
+        "graphics": "Intel UHD Graphics 630",
+        "ram": "8GB",
+        "storage": "1TB HDD"
+      },
+      "price": 400
+    },
+    {
+      "id": 12,
+      "name": "Pavilion TP02",
+      "brand": "HP",
+      "image": "/imgs/computers/hp_pavilion_tp02.webp",
+      "description": "The HP Pavilion TP02 is a versatile desktop with enhanced performance. It offers solid performance and a range of features suitable for both work and entertainment.",
+      "specifications": {
+        "processor": "AMD Ryzen 3",
+        "graphics": "AMD Radeon Graphics",
+        "ram": "8GB",
+        "storage": "256GB SSD"
+      },
+      "price": 450
+    },
+    {
+      "id": 13,
+      "name": "IdeaCentre 3",
+      "brand": "Lenovo",
+      "image": "/imgs/computers/lenovo_ideacentre_3.webp",
+      "description": "The Lenovo IdeaCentre 3 is a compact desktop designed for everyday tasks. It combines performance and style, making it a great choice for various tasks.",
+      "specifications": {
+        "processor": "Intel Core i3",
+        "graphics": "Intel UHD Graphics 630",
+        "ram": "8GB",
+        "storage": "512GB SSD"
+      },
+      "price": 500
+    },
+    {
+      "id": 14,
+      "name": "Aspire TC-885",
+      "brand": "Acer",
+      "image": "/imgs/computers/acer_aspire_tc_885.webp",
+      "description": "The Acer Aspire TC-885 is a budget-friendly desktop with solid performance. It is suitable for users who need a reliable and affordable computing solution.",
+      "specifications": {
+        "processor": "Intel Core i3",
+        "graphics": "Intel UHD Graphics 630",
+        "ram": "8GB",
+        "storage": "1TB HDD"
+      },
+      "price": 400
+    },
+    {
+      "id": 15,
+      "name": "ROG Strix GA15DH",
+      "brand": "ASUS",
+      "image": "/imgs/computers/asus_rog_strix_ga15dh.webp",
+      "description": "The ASUS ROG Strix GA15DH is a gaming desktop with great value. It is designed for gamers who need a powerful and reliable system for gaming and entertainment.",
+      "specifications": {
+        "processor": "AMD Ryzen 5",
+        "graphics": "NVIDIA GeForce GTX 1650",
+        "ram": "8GB",
+        "storage": "512GB SSD"
+      },
+      "price": 900
+    },
+    {
+      "id": 16,
+      "name": "XPS 8930",
+      "brand": "Dell",
+      "image": "/imgs/computers/dell_xps_8930.webp",
+      "description": "The Dell XPS 8930 is a high-performance desktop designed for creative tasks. It offers powerful hardware and advanced features for users who need a reliable computing solution.",
+      "specifications": {
+        "processor": "Intel Core i9",
+        "graphics": "NVIDIA GeForce RTX 3070",
+        "ram": "32GB",
+        "storage": "1TB SSD"
+      },
+      "price": 1800
+    },
+    {
+      "id": 17,
+      "name": "Envy TE02",
+      "brand": "HP",
+      "image": "/imgs/computers/hp_envy_te02.webp",
+      "description": "The HP Envy TE02 is a premium desktop with advanced features. It is ideal for users who need a high-performance system for both work and entertainment.",
+      "specifications": {
+        "processor": "Intel Core i9",
+        "graphics": "NVIDIA GeForce RTX 2080 Super",
+        "ram": "32GB",
+        "storage": "2TB SSD"
+      },
+      "price": 1600
+    },
+    {
+      "id": 18,
+      "name": "Legion T7",
+      "brand": "Lenovo",
+      "image": "/imgs/computers/lenovo_legion_t7.webp",
+      "description": "The Lenovo Legion T7 is a gaming desktop with ultimate performance. It is designed for gamers who need a powerful and reliable system for gaming and entertainment.",
+      "specifications": {
+        "processor": "AMD Ryzen 9",
+        "graphics": "NVIDIA GeForce RTX 4080",
+        "ram": "32GB",
+        "storage": "2TB SSD"
+      },
+      "price": 2100
+    },
+    {
+      "id": 19,
+      "name": "Predator Orion 5000",
+      "brand": "Acer",
+      "image": "/imgs/computers/acer_predator_orion_5000.webp",
+      "description": "The Acer Predator Orion 5000 is a high-end gaming desktop with exceptional performance. It is suitable for gamers who need a high-performance system for gaming and entertainment.",
+      "specifications": {
+        "processor": "Intel Core i9",
+        "graphics": "NVIDIA GeForce RTX 4080",
+        "ram": "32GB",
+        "storage": "2TB SSD"
+      },
+      "price": 2200
+    },
+    {
+      "id": 20,
+      "name": "ROG Strix GA35DX",
+      "brand": "ASUS",
+      "image": "/imgs/computers/asus_rog_strix_ga35dx.webp",
+      "description": "The ASUS ROG Strix GA35DX is a top-tier gaming desktop with unmatched performance. It is designed for gamers who need a powerful and reliable system for gaming and entertainment.",
+      "specifications": {
+        "processor": "AMD Ryzen 9",
+        "graphics": "NVIDIA GeForce RTX 4090",
+        "ram": "64GB",
+        "storage": "2TB SSD"
+      },
+      "price": 2700
+    }
+  ]
+}
