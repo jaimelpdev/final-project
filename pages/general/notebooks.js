@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import Header from "../../components/header";
+import Cart from "../../components/cart";
+import { useCart } from "../../context/CartContext";
 
 export default function Notebooks() {
   const [brands, setBrands] = useState([]);
@@ -8,8 +10,7 @@ export default function Notebooks() {
   const [selectedModel, setSelectedModel] = useState(null);
   const [displayedModel, setDisplayedModel] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [cart, setCart] = useState([]);
-  const [showCart, setShowCart] = useState(false);
+  const { addToCart } = useCart();
 
   useEffect(() => {
     fetch("/json/notebooks.json")
@@ -28,11 +29,6 @@ export default function Notebooks() {
       .catch((error) => {
         console.error("Error fetching notebooks data:", error);
       });
-
-    const cartDropdown = document.querySelector(".cart-dropdown");
-    if (cartDropdown) {
-      cartDropdown.classList.add("devices-cart");
-    }
   }, []);
 
   const handleBrandChange = (e) => {
@@ -68,107 +64,13 @@ export default function Notebooks() {
     }
   };
 
-  const addToCart = (product, price) => {
-    setCart((prevCart) => {
-      const item = prevCart.find((item) => item.product === product);
-      if (item) {
-        return prevCart.map((item) =>
-          item.product === product
-            ? {
-                ...item,
-                quantity: item.quantity + 1,
-                totalPrice: item.totalPrice + price
-              }
-            : item
-        );
-      } else {
-        if (!showCart) {
-          setShowCart(true);
-        }
-        return [
-          ...prevCart,
-          { product, price, quantity: 1, totalPrice: price }
-        ];
-      }
-    });
-  };
-
-  const decrementFromCart = (product) => {
-    setCart((prevCart) => {
-      return prevCart
-        .map((item) =>
-          item.product === product
-            ? {
-                ...item,
-                quantity: item.quantity - 1,
-                totalPrice: item.totalPrice - item.price
-              }
-            : item
-        )
-        .filter((item) => item.quantity > 0);
-    });
-  };
-
-  const removeFromCart = (product) => {
-    setCart((prevCart) => prevCart.filter((item) => item.product !== product));
-  };
-
-  const emptyCart = () => setCart([]);
-  const checkout = () => setCart([]);
-
-  const total = cart.reduce((acc, item) => acc + item.totalPrice, 0);
-
-  const toggleCart = () => {
-    setShowCart(!showCart);
-  };
-
   return (
     <div>
       <Header />
       <h2 id="title">Notebooks</h2>
       <div className="cart-header">
-        <button className="cart-icon" onClick={toggleCart}>
-          <i className="fas fa-shopping-cart"></i>
-        </button>
+        <Cart />
       </div>
-      {showCart && (
-        <div id="cart" className="cart-dropdown show">
-          <ul id="cart-items">
-            {cart.map((item, index) => (
-              <li key={index}>
-                <span>
-                  {item.product} - {item.price}$ x {item.quantity} ={" "}
-                  {item.totalPrice}$
-                </span>
-                <span className="quantity-control">
-                  <button
-                    id="minus"
-                    onClick={() => decrementFromCart(item.product)}
-                  >
-                    -
-                  </button>
-                  <span className="quantity">{item.quantity}</span>
-                  <button
-                    id="plus"
-                    onClick={() => addToCart(item.product, item.price)}
-                  >
-                    +
-                  </button>
-                </span>
-                <button
-                  className="remove"
-                  onClick={() => removeFromCart(item.product)}
-                >
-                  Remove
-                </button>
-              </li>
-            ))}
-          </ul>
-          <p id="total">Total: {total}$</p>
-          <button onClick={emptyCart}>Empty Cart</button>
-          <button onClick={checkout}>Checkout</button>
-        </div>
-      )}
       <form id="devices_form" onSubmit={handleSubmit}>
         <label htmlFor="device_brand">Brand:</label>
         <select id="device_brand" onChange={handleBrandChange}>
@@ -202,7 +104,7 @@ export default function Notebooks() {
         <div id="devicesDetails">
           <div className="devicesDetailsContainer">
             <img
-              id="devicesImage"
+              class="devicesImage"
               src={displayedModel.image}
               alt="device's image"
             />
@@ -230,9 +132,7 @@ export default function Notebooks() {
               </p>
               <button
                 id="addToCart"
-                onClick={() =>
-                  addToCart(displayedModel.name, displayedModel.price)
-                }
+                onClick={() => addToCart(displayedModel.name, displayedModel.price, "Notebooks")}
               >
                 Add to Cart
               </button>

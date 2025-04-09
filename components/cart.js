@@ -1,89 +1,84 @@
-export default function Cart({ cart, setCart, showCart, toggleCart, total }) {
-  const addToCart = (product, price) => {
-    setCart((prevCart) => {
-      const item = prevCart.find((item) => item.product === product);
-      if (item) {
-        return prevCart.map((item) =>
-          item.product === product
-            ? {
-                ...item,
-                quantity: item.quantity + 1,
-                totalPrice: item.totalPrice + price
-              }
-            : item
-        );
-      } else {
-        return [
-          ...prevCart,
-          { product, price, quantity: 1, totalPrice: price }
-        ];
-      }
-    });
-  };
+import { useCart } from "../context/CartContext";
 
-  const decrementFromCart = (product) => {
-    setCart((prevCart) => {
-      return prevCart
-        .map((item) =>
-          item.product === product
-            ? {
-                ...item,
-                quantity: item.quantity - 1,
-                totalPrice: item.totalPrice - item.price
-              }
-            : item
-        )
-        .filter((item) => item.quantity > 0);
-    });
-  };
-
-  const removeFromCart = (product) => {
-    setCart((prevCart) => prevCart.filter((item) => item.product !== product));
-  };
-
-  const emptyCart = () => setCart([]);
-  const checkout = () => setCart([]);
+export default function Cart() {
+  const {
+    cart,
+    showCart,
+    toggleCart,
+    addToCart,
+    removeFromCart,
+    decrementFromCart,
+    emptyCart,
+    checkout,
+    getTotal
+  } = useCart();
 
   return (
-    <div>
+    <>
       <button className="cart-icon" onClick={toggleCart}>
         <i className="fas fa-shopping-cart"></i>
       </button>
-      {showCart && (
-        <div id="cart" className="cart-dropdown show">
-          <ul id="cart-items">
-            {cart.map((item, index) => (
-              <li key={index}>
-                <span>
-                  {item.product} - ${item.price}
-                </span>
-                <span className="quantity-control">
-                  <button onClick={() => decrementFromCart(item.product)}>
-                    -
-                  </button>
-                  <span className="quantity">{item.quantity}</span>
-                  <button onClick={() => addToCart(item.product, item.price)}>
-                    +
-                  </button>
-                </span>
-                <button
-                  className="remove"
-                  onClick={() => removeFromCart(item.product)}
-                >
-                  Remove
-                </button>
-              </li>
-            ))}
-          </ul>
-          <p id="total">Total: ${total}</p>
-          <button className="blue-buttons-cart" onClick={emptyCart}>
-            Empty Cart
-          </button>
-          <button className="blue-buttons-cart" onClick={checkout}>
-            Checkout
+      <div className={`cart-sidebar ${showCart ? 'show' : ''}`}>
+        <div className="cart-header">
+          <h2>Shopping Cart</h2>
+          <button className="close-cart" onClick={toggleCart}>
+            <i className="fas fa-times"></i>
           </button>
         </div>
-      )}
-    </div>
+        <div className="cart-content">
+          {Object.entries(cart).length > 0 ? (
+            <>
+              {Object.entries(cart).map(([category, items]) => (
+                <div key={category} className="cart-category">
+                  <h3>{category}</h3>
+                  <ul className="cart-items">
+                    {items.map((item, index) => (
+                      <li key={index}>
+                        <span className="item-name">{item.name}</span>
+                        <div className="item-details">
+                          <span className="item-price">${item.price}</span>
+                          <div className="quantity-control">
+                            <button
+                              onClick={() => decrementFromCart(item.name, category)}
+                            >
+                              -
+                            </button>
+                            <span>{item.quantity}</span>
+                            <button
+                              onClick={() => addToCart(item.name, item.price, category)}
+                            >
+                              +
+                            </button>
+                          </div>
+                          <button
+                            className="remove"
+                            onClick={() => removeFromCart(item.name, category)}
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+              <div className="cart-footer">
+                <p className="cart-total">Total: ${getTotal()}</p>
+                <div className="cart-buttons">
+                  <button className="empty-cart" onClick={emptyCart}>
+                    Empty Cart
+                  </button>
+                  <button className="checkout" onClick={checkout}>
+                    Checkout
+                  </button>
+                </div>
+              </div>
+            </>
+          ) : (
+            <p className="empty-cart-message">Your cart is empty</p>
+          )}
+        </div>
+      </div>
+    </>
   );
 }

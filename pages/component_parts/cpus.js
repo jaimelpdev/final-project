@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "../../components/header";
-import Cart from "../../components/Cart";
+import Cart from "../../components/cart";
+import { useCart } from "../../context/CartContext";
 
 const products = [
   {
@@ -65,16 +66,8 @@ const products = [
   }
 ];
 
-export default function cpuStore() {
-  const [cart, setCart] = useState([]);
-  const [showCart, setShowCart] = useState(false);
-
-  const toggleCart = () => {
-    setShowCart(!showCart);
-  };
-
-  // Calculate the total price of the cart
-  const total = cart.reduce((acc, item) => acc + item.totalPrice, 0);
+export default function cpusStore() {
+  const { addToCart } = useCart();
 
   return (
     <div>
@@ -82,13 +75,7 @@ export default function cpuStore() {
       <div className="content">
         <div className="cart-header">
           <h2 id="title">Available CPUs</h2>
-          <Cart
-            cart={cart}
-            setCart={setCart}
-            showCart={showCart}
-            toggleCart={toggleCart}
-            total={total} // Pass the total as a prop
-          />
+          <Cart />
         </div>
         <div className="products-container">
           {products.map((product, index) => (
@@ -98,35 +85,7 @@ export default function cpuStore() {
               <p>Price: ${product.price}</p>
               <button
                 className="add-to-cart"
-                onClick={() => {
-                  if (!showCart) toggleCart();
-                  setCart((prevCart) => {
-                    const item = prevCart.find(
-                      (item) => item.product === product.name
-                    );
-                    if (item) {
-                      return prevCart.map((item) =>
-                        item.product === product.name
-                          ? {
-                              ...item,
-                              quantity: item.quantity + 1,
-                              totalPrice: item.totalPrice + product.price
-                            }
-                          : item
-                      );
-                    } else {
-                      return [
-                        ...prevCart,
-                        {
-                          product: product.name,
-                          price: product.price,
-                          quantity: 1,
-                          totalPrice: product.price
-                        }
-                      ];
-                    }
-                  });
-                }}
+                onClick={() => addToCart(product.name, product.price, "CPUs")}
               >
                 Add to Cart
               </button>
