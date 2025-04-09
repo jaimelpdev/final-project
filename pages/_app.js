@@ -1,3 +1,4 @@
+import { appWithTranslation } from 'next-i18next';
 import { CartProvider } from '../context/CartContext';
 import '../styles/globals.css';
 
@@ -9,4 +10,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);
