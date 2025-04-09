@@ -34,8 +34,10 @@
   "Brand": "Marca",
   "Model": "Modelo",
   "- Please select -": "- Por favor selecciona -",
+  "Show Computer": "Mostrar Ordenador",
   "Specifications": "Especificaciones",
   "Processor": "Procesador",
   "Storage": "Almacenamiento",
-  "Graphics": "Gráficos"
+  "Graphics": "Gráficos",
+  "Add to Cart": "Añadir al Carrito"
 }

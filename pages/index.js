@@ -34,7 +34,7 @@ export default function Home() {
           <p>{t("Dell XPS 13")}</p>
           <p>{t("Dell XPS 13 Description")}</p>
           <p>
-            <b>{t("Price")}</b>: 
+            <b>{t("Price")}</b>: $1399
           </p>
         </div>
         <div className="offersItem">
@@ -45,7 +45,7 @@ export default function Home() {
           <p>{t("MacBook Pro 16")}</p>
           <p>{t("MacBook Pro 16 Description")}</p>
           <p>
-            <b>{t("Price")}</b>: 
+            <b>{t("Price")}</b>: $2399
           </p>
         </div>
         <div className="offersItem">
@@ -56,7 +56,7 @@ export default function Home() {
           <p>{t("ASUS ROG Strix GA35")}</p>
           <p>{t("ASUS ROG Strix GA35 Description")}</p>
           <p>
-            <b>{t("Price")}</b>: 
+            <b>{t("Price")}</b>: $1999
           </p>
         </div>
         <div className="offersItem">
@@ -67,7 +67,7 @@ export default function Home() {
           <p>{t("Lenovo Legion T5")}</p>
           <p>{t("Lenovo Legion T5 Description")}</p>
           <p>
-            <b>{t("Price")}</b>: 
+            <b>{t("Price")}</b>: $1400
           </p>
         </div>
       </div>
