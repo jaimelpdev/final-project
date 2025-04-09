@@ -8,7 +8,7 @@
   "🔥 Special Offers 🔥": "🔥 Ofertas Especiales 🔥",
   "Dell XPS 13": "Dell XPS 13",
   "Dell XPS 13 Description": " Ultrabook premium con Intel Core i7, 16GB de RAM y 512GB SSD. Compacto y potente para trabajo y entretenimiento.",
-  "Price": "Precio:",
+  "Price": "Precio",
   "Price Dell XPS 13": "$1399",
   "MacBook Pro 16": "MacBook Pro 16",
   "MacBook Pro 16 Description": " Portátil de alto rendimiento con chip Apple M4+, 16GB de RAM y 1TB SSD. Perfecto para profesionales y creativos.",
@@ -30,5 +30,12 @@
   "Why Choose ByteMasters?": "¿Por qué elegir ByteMasters?",
   "At ByteMasters, we pride ourselves on offering top-quality products at competitive prices. Our team of experts is here to help you find the perfect solution for your needs.": "En ByteMasters, nos enorgullecemos de ofrecer productos de alta calidad a precios competitivos. Nuestro equipo de expertos está aquí para ayudarte a encontrar la solución perfecta para tus necesidades.",
   "Enjoy fast shipping, excellent customer service, and a wide range of products to choose from. Your satisfaction is our priority.": "Disfruta de envíos rápidos, excelente servicio al cliente y una amplia gama de productos para elegir. Tu satisfacción es nuestra prioridad.",
-  "Join our community of tech enthusiasts and discover why ByteMasters is the go-to destination for all your computing needs.": "Únete a nuestra comunidad de entusiastas de la tecnología y descubre por qué ByteMasters es el destino preferido para todas tus necesidades informáticas."
+  "Join our community of tech enthusiasts and discover why ByteMasters is the go-to destination for all your computing needs.": "Únete a nuestra comunidad de entusiastas de la tecnología y descubre por qué ByteMasters es el destino preferido para todas tus necesidades informáticas.",
+  "Brand": "Marca",
+  "Model": "Modelo",
+  "- Please select -": "- Por favor selecciona -",
+  "Specifications": "Especificaciones",
+  "Processor": "Procesador",
+  "Storage": "Almacenamiento",
+  "Graphics": "Gráficos"
 }
