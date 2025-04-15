@@ -43,6 +43,12 @@ const products = [
     type: "Open Frame",
   },
   {
+    name: "ASUS TUF GT501",
+    price: 160,
+    image: "/imgs/cases/asus-tuf-gt501.webp",
+    type: "Mid Tower",
+  },
+  {
     name: "Be Quiet! Silent Base 802",
     price: 180,
     image: "/imgs/cases/bequiet-silent-base-802.webp",
@@ -65,7 +71,9 @@ export default function caseStore() {
       <Header />
       <div className="content">
         <div className="cart-header">
-          <h2 id="title">{t("Available")} {t("Cases")}</h2>
+          <h2 id="title">
+            {t("Available")} {t("Cases")}
+          </h2>
           <Cart />
         </div>
         <div className="products-container">

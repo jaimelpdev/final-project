@@ -26,6 +26,12 @@ const products = [
     type: "ATX",
   },
   {
+    name: "MSI MAG B550 Tomahawk",
+    price: 180,
+    image: "/imgs/motherboards/msi-mag-b550-tomahawk.webp",
+    type: "ATX",
+  },
+  {
     name: "ASUS TUF Gaming B550-PLUS",
     price: 200,
     image: "/imgs/motherboards/asus-tuf-gaming-b550-plus.webp",

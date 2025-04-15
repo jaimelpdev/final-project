@@ -54,6 +54,12 @@ const products = [
     image: "/imgs/fans/thermaltake-riing-plus-12.webp",
     type: "120mm",
   },
+  {
+    name: "Noctua NF-A12x25",
+    price: 50,
+    image: "/imgs/fans/noctua-nf-a12x25.webp",
+    type: "120mm",
+  },
 ];
 
 export default function fanStore() {
@@ -73,7 +79,9 @@ export default function fanStore() {
             <div className="product" key={index}>
               <img src={product.image} alt={`image of a ${product.name}`} />
               <h3>{product.name}</h3>
-              <p>{t("Price")}: ${product.price}</p>
+              <p>
+                {t("Price")}: ${product.price}
+              </p>
               <button
                 className="add-to-cart"
                 onClick={() => addToCart(product.name, product.price, "Fans")}

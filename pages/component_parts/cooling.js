@@ -13,6 +13,12 @@ const products = [
     type: "Air Cooler",
   },
   {
+    name: "Arctic Freezer 34",
+    price: 50,
+    image: "/imgs/cooling/arctic-freezer-34.webp",
+    type: "Air Cooler",
+  },
+  {
     name: "DeepCool AK620",
     price: 70,
     image: "/imgs/cooling/deepcool-ak620.webp",
@@ -73,8 +79,12 @@ export default function coolingStore() {
             <div className="product" key={index}>
               <img src={product.image} alt={`image of a ${product.name}`} />
               <h3>{product.name}</h3>
-              <p>{t("Price")}: ${product.price}</p>
-              <p>{t("Type")}: {t(product.type)}</p>
+              <p>
+                {t("Price")}: ${product.price}
+              </p>
+              <p>
+                {t("Type")}: {t(product.type)}
+              </p>
               <button
                 className="add-to-cart"
                 onClick={() =>

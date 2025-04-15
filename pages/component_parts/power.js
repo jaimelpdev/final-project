@@ -37,6 +37,12 @@ const products = [
     efficiency: "80+ Gold"
   },
   {
+    name: "NZXT C750",
+    price: 130,
+    image: "/imgs/power/nzxt-c750.webp",
+    efficiency: "80+ Gold"
+  },
+  {
     name: "Seasonic Focus GX-850 850W",
     price: 140,
     image: "/imgs/power/seasonic-focus-gx-850.webp",
