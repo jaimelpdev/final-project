@@ -127,7 +127,7 @@ h2#title {
 
 .cart-icon {
   position: fixed;
-  top: 20px;
+  top:5px;
   right: 20px;
   z-index: 1001;
   background: #2563eb;

@@ -2,6 +2,8 @@ import { useState } from "react";
 import Header from "../../components/header";
 import Cart from "../../components/cart";
 import { useCart } from "../../context/CartContext";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const products = [
   {
@@ -41,12 +43,6 @@ const products = [
     type: "Open Frame",
   },
   {
-    name: "ASUS TUF Gaming GT501",
-    price: 160,
-    image: "/imgs/cases/asus-tuf-gt501.webp",
-    type: "Mid Tower",
-  },
-  {
     name: "Be Quiet! Silent Base 802",
     price: 180,
     image: "/imgs/cases/bequiet-silent-base-802.webp",
@@ -62,13 +58,14 @@ const products = [
 
 export default function caseStore() {
   const { addToCart } = useCart();
+  const { t } = useTranslation("common");
 
   return (
     <div>
       <Header />
       <div className="content">
         <div className="cart-header">
-          <h2 id="title">Available Cases</h2>
+          <h2 id="title">{t("Available")} {t("Cases")}</h2>
           <Cart />
         </div>
         <div className="products-container">
@@ -76,13 +73,17 @@ export default function caseStore() {
             <div className="product" key={index}>
               <img src={product.image} alt={`image of a ${product.name}`} />
               <h3>{product.name}</h3>
-              <p>Price: ${product.price}</p>
-              <p>Type: {product.type}</p>
+              <p>
+                {t("Price")}: ${product.price}
+              </p>
+              <p>
+                {t("Type")}: {t(product.type)}
+              </p>
               <button
                 className="add-to-cart"
                 onClick={() => addToCart(product.name, product.price, "Cases")}
               >
-                Add to Cart
+                {t("Add to Cart")}
               </button>
             </div>
           ))}
@@ -90,4 +91,12 @@ export default function caseStore() {
       </div>
     </div>
   );
+}
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
 }

@@ -1,9 +1,15 @@
-import React from "react";
-import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 import Header from "../../components/header";
+import Cart from "../../components/cart";
+import { useCart } from "../../context/CartContext";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router";
 
-const ComponentSelection = () => {
+export default function Components() {
+  const { t } = useTranslation("common");
   const router = useRouter();
+  const { addToCart } = useCart();
 
   const handleComponentClick = (componentType) => {
     router.push(`/components/${componentType}`);
@@ -12,107 +18,136 @@ const ComponentSelection = () => {
   return (
     <div>
       <Header />
-      <h2 id="title">Components</h2>
+      <h2 id="title">{t("Components")}</h2>
+      <div className="cart-header">
+        <Cart />
+      </div>
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "20px"
+          gap: "20px",
         }}
       >
         <div>
-          <button onClick={() => handleComponentClick("../component_parts/cpus")}>
+          <button
+            onClick={() => handleComponentClick("../component_parts/cpus")}
+          >
             <img
               src="/imgs/components/processors.webp"
-              alt="Processors"
+              alt={t("Processors")}
               style={{ cursor: "pointer" }}
             />
           </button>
-          <p>Processors</p>
+          <p>{t("Processors")}</p>
         </div>
         <div>
-          <button onClick={() => handleComponentClick("../component_parts/gpus")}>
+          <button
+            onClick={() => handleComponentClick("../component_parts/gpus")}
+          >
             <img
               src="/imgs/components/graphics.webp"
-              alt="Graphics Cards"
+              alt={t("Graphics Cards")}
               style={{ cursor: "pointer" }}
             />
           </button>
-          <p>Graphics Cards</p>
+          <p>{t("Graphics Cards")}</p>
         </div>
         <div>
-          <button onClick={() => handleComponentClick("../component_parts/motherboards")}>
+          <button
+            onClick={() =>
+              handleComponentClick("../component_parts/motherboards")
+            }
+          >
             <img
               src="/imgs/components/motherboards.webp"
-              alt="Motherboards"
+              alt={t("Motherboards")}
               style={{ cursor: "pointer" }}
             />
           </button>
-          <p>Motherboards</p>
+          <p>{t("Motherboards")}</p>
         </div>
         <div>
-          <button onClick={() => handleComponentClick("../component_parts/rams")}>
+          <button
+            onClick={() => handleComponentClick("../component_parts/rams")}
+          >
             <img
               src="/imgs/components/memory.webp"
-              alt="Memory"
+              alt={t("Memory")}
               style={{ cursor: "pointer" }}
             />
           </button>
-          <p>Memory</p>
+          <p>{t("Memory")}</p>
         </div>
         <div>
-          <button onClick={() => handleComponentClick("../component_parts/storage")}>
+          <button
+            onClick={() => handleComponentClick("../component_parts/storage")}
+          >
             <img
               src="/imgs/components/storage.webp"
-              alt="Storage"
+              alt={t("Storage")}
               style={{ cursor: "pointer" }}
             />
           </button>
-          <p>Storage</p>
+          <p>{t("Storage")}</p>
         </div>
         <div>
-          <button onClick={() => handleComponentClick("../component_parts/power")}>
+          <button
+            onClick={() => handleComponentClick("../component_parts/power")}
+          >
             <img
               src="/imgs/components/power.webp"
-              alt="Power Supplies"
+              alt={t("Power Supplies")}
               style={{ cursor: "pointer" }}
             />
           </button>
-          <p>Power Supplies</p>
+          <p>{t("Power Supplies")}</p>
         </div>
         <div>
-          <button onClick={() => handleComponentClick("../component_parts/cases")}>
+          <button
+            onClick={() => handleComponentClick("../component_parts/cases")}
+          >
             <img
               src="/imgs/components/cases.webp"
-              alt="Cases"
+              alt={t("Cases")}
               style={{ cursor: "pointer" }}
             />
           </button>
-          <p>Cases</p>
+          <p>{t("Cases")}</p>
         </div>
         <div>
-          <button onClick={() => handleComponentClick("../component_parts/cooling")}>
+          <button
+            onClick={() => handleComponentClick("../component_parts/cooling")}
+          >
             <img
               src="/imgs/components/cooling.webp"
-              alt="Cooling"
+              alt={t("Cooling")}
               style={{ cursor: "pointer" }}
             />
           </button>
-          <p>Cooling</p>
+          <p>{t("Cooling")}</p>
         </div>
         <div>
-          <button onClick={() => handleComponentClick("../component_parts/fans")}>
+          <button
+            onClick={() => handleComponentClick("../component_parts/fans")}
+          >
             <img
               src="/imgs/components/fans.webp"
-              alt="Fans"
+              alt={t("Fans")}
               style={{ cursor: "pointer" }}
             />
           </button>
-          <p>Fans</p>
+          <p>{t("Fans")}</p>
         </div>
       </div>
     </div>
   );
-};
+}
 
-export default ComponentSelection;
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
+}

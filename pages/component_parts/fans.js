@@ -2,6 +2,8 @@ import { useState } from "react";
 import Header from "../../components/header";
 import Cart from "../../components/cart";
 import { useCart } from "../../context/CartContext";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const products = [
   {
@@ -35,12 +37,6 @@ const products = [
     type: "140mm",
   },
   {
-    name: "Noctua NF-A12x25",
-    price: 30,
-    image: "/imgs/fans/noctua-nf-a12x25.webp",
-    type: "120mm",
-  },
-  {
     name: "Lian Li UNI Fan SL120",
     price: 30,
     image: "/imgs/fans/lian-li-uni-fan-sl120.webp",
@@ -62,13 +58,14 @@ const products = [
 
 export default function fanStore() {
   const { addToCart } = useCart();
+  const { t } = useTranslation("common");
 
   return (
     <div>
       <Header />
       <div className="content">
         <div className="cart-header">
-          <h2 id="title">Available Fans</h2>
+          <h2 id="title">{t("Available Fans")}</h2>
           <Cart />
         </div>
         <div className="products-container">
@@ -76,13 +73,12 @@ export default function fanStore() {
             <div className="product" key={index}>
               <img src={product.image} alt={`image of a ${product.name}`} />
               <h3>{product.name}</h3>
-              <p>Price: ${product.price}</p>
-              <p>Size: {product.size}</p>
+              <p>{t("Price")}: ${product.price}</p>
               <button
                 className="add-to-cart"
                 onClick={() => addToCart(product.name, product.price, "Fans")}
               >
-                Add to Cart
+                {t("Add to Cart")}
               </button>
             </div>
           ))}
@@ -90,4 +86,12 @@ export default function fanStore() {
       </div>
     </div>
   );
+}
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
 }

@@ -1,4 +1,5 @@
 import { useCart } from "../context/CartContext";
+import { useTranslation } from "next-i18next";
 
 export default function Cart() {
   const {
@@ -10,17 +11,22 @@ export default function Cart() {
     decrementFromCart,
     emptyCart,
     checkout,
-    getTotal
+    getTotal,
   } = useCart();
+  const { t } = useTranslation("common");
 
   return (
     <>
-      <button className="cart-icon" onClick={toggleCart}>
-        <i className="fas fa-shopping-cart"></i>
-      </button>
-      <div className={`cart-sidebar ${showCart ? 'show' : ''}`}>
+      {!showCart && (
+        <div>
+          <button className="cart-icon" onClick={toggleCart}>
+            <i className="fas fa-shopping-cart"></i>
+          </button>
+        </div>
+      )}
+      <div className={`cart-sidebar ${showCart ? "show" : ""}`}>
         <div className="cart-header">
-          <h2>Shopping Cart</h2>
+          <h2>{t("Shopping Cart")}</h2>
           <button className="close-cart" onClick={toggleCart}>
             <i className="fas fa-times"></i>
           </button>
@@ -30,7 +36,9 @@ export default function Cart() {
             <>
               {Object.entries(cart).map(([category, items]) => (
                 <div key={category} className="cart-category">
-                  <h3>{category}</h3>
+                  <h3>
+                    {typeof category === "object" ? category.name : t(category)}
+                  </h3>
                   <ul className="cart-items">
                     {items.map((item, index) => (
                       <li key={index}>
@@ -39,13 +47,17 @@ export default function Cart() {
                           <span className="item-price">${item.price}</span>
                           <div className="quantity-control">
                             <button
-                              onClick={() => decrementFromCart(item.name, category)}
+                              onClick={() =>
+                                decrementFromCart(item.name, category)
+                              }
                             >
                               -
                             </button>
                             <span>{item.quantity}</span>
                             <button
-                              onClick={() => addToCart(item.name, item.price, category)}
+                              onClick={() =>
+                                addToCart(item.name, item.price, category)
+                              }
                             >
                               +
                             </button>
@@ -54,7 +66,7 @@ export default function Cart() {
                             className="remove"
                             onClick={() => removeFromCart(item.name, category)}
                           >
-                            Remove
+                            {t("Remove")}
                           </button>
                         </div>
                       </li>
@@ -66,16 +78,16 @@ export default function Cart() {
                 <p className="cart-total">Total: ${getTotal()}</p>
                 <div className="cart-buttons">
                   <button className="empty-cart" onClick={emptyCart}>
-                    Empty Cart
+                    {t("Empty Cart")}
                   </button>
                   <button className="checkout" onClick={checkout}>
-                    Checkout
+                    {t("Checkout")}
                   </button>
                 </div>
               </div>
             </>
           ) : (
-            <p className="empty-cart-message">Your cart is empty</p>
+            <p className="empty-cart-message">{t("Your cart is empty")}</p>
           )}
         </div>
       </div>

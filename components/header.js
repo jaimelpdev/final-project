@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
+import LanguageSwitcher from "./languageSwitcher"; // Importa el componente
 
 const Header = () => {
   const { t } = useTranslation("common");
@@ -29,6 +30,9 @@ const Header = () => {
           </b>
         </li>
       </ul>
+      <div className="languageSwitcher">
+        <LanguageSwitcher />
+      </div>
     </div>
   );
 };

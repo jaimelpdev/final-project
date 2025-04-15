@@ -2,6 +2,8 @@ import { useState } from "react";
 import Header from "../../components/header";
 import Cart from "../../components/cart";
 import { useCart } from "../../context/CartContext";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const products = [
   {
@@ -80,14 +82,15 @@ const products = [
 
 export default function gpuStore() {
   const { addToCart } = useCart();
+  const { t } = useTranslation("common");
 
   return (
     <div>
       <Header />
       <div className="content">
         <div className="cart-header">
-          <h2 id="title">Available GPUs</h2>
-          
+          <h2 id="title">{t("Available GPUs")}</h2>
+
           <Cart />
         </div>
         <div className="products-container">
@@ -95,12 +98,14 @@ export default function gpuStore() {
             <div className="product" key={index}>
               <img src={product.image} alt={`image of a ${product.name}`} />
               <h3>{product.name}</h3>
-              <p>Price: ${product.price}</p>
+              <p>
+                {t("Price")}: ${product.price}
+              </p>
               <button
                 className="add-to-cart"
                 onClick={() => addToCart(product.name, product.price, "GPUs")}
               >
-                Add to Cart
+                {t("Add to Cart")}
               </button>
             </div>
           ))}
@@ -108,4 +113,12 @@ export default function gpuStore() {
       </div>
     </div>
   );
+}
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
 }

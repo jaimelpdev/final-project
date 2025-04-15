@@ -113,7 +113,9 @@ export default function Computers() {
                 alt="device's image"
               />
               <div className="devicesDescriptionContainer">
-                <p id="devicesDescription">{displayedModel.description}</p>
+                <p id="devicesDescription">
+                  {t(`${displayedModel.name} Description`)}
+                </p>
                 <div id="devicesSpecifications">
                   <h3>{t("Specifications")}:</h3>
                   <ul>

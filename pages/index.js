@@ -14,12 +14,6 @@ export default function Home() {
   return (
     <div>
       <Header />
-      {/* Language Switcher */}
-      <div style={{ marginBottom: "10px" }}>
-        <p>{t("LANGUAGE")}</p>
-        <button onClick={() => changeLanguage("en")}>English</button>
-        <button onClick={() => changeLanguage("es")}>Español</button>
-      </div>
       <h2 className="subtitle">{t("Welcome to ByteMasters!")}</h2>
       <p className="presentationText">
         {t(
@@ -32,7 +26,7 @@ export default function Home() {
         <div className="offersItem">
           <img src="/imgs/notebooks/dell-xps-13.webp" alt="Dell XPS 13" />
           <p>{t("Dell XPS 13")}</p>
-          <p>{t("Dell XPS 13 Description")}</p>
+          <p>{t("XPS 13 Description")}</p>
           <p>
             <b>{t("Price")}</b>: $1399
           </p>
@@ -54,7 +48,7 @@ export default function Home() {
             alt="ASUS ROG Strix GA35"
           />
           <p>{t("ASUS ROG Strix GA35")}</p>
-          <p>{t("ASUS ROG Strix GA35 Description")}</p>
+          <p>{t("ROG Strix GA35 Description")}</p>
           <p>
             <b>{t("Price")}</b>: $1999
           </p>
@@ -65,7 +59,7 @@ export default function Home() {
             alt="Lenovo Legion T5"
           />
           <p>{t("Lenovo Legion T5")}</p>
-          <p>{t("Lenovo Legion T5 Description")}</p>
+          <p>{t("Legion T5 Description")}</p>
           <p>
             <b>{t("Price")}</b>: $1400
           </p>
@@ -101,8 +95,7 @@ export default function Home() {
         </div>
         <div className="featuredText">
           <p>
-            {t("ASUS ROG Strix GA35DX")}
-            {t("ASUS ROG Strix GA35DX Description")}
+            {t("ROG Strix GA35DX Description")}
           </p>
           <p>
             <b>{t("Price")}</b>: $2700
