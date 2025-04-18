@@ -18,12 +18,13 @@ const RegisterPage = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError(null);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    console.log("Data sended to backend:", formData);
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/register`, {
+      const response = await fetch("/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,14 +34,16 @@ const RegisterPage = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        setError(errorData.message || "Error to register, please try again.");
-        return;
+        console.error("Server error:", errorData);
+        throw new Error(errorData.message || "Failed to register");
       }
 
-      // Redirect the user to the login page after successful registration
-      router.push("/login");
-    } catch (err) {
-      setError("An inexpected error occurred. Please try again.");
+      const data = await response.json();
+      console.log("Registration successful:", data);
+      // Redirect to the login page or show a success message
+    } catch (error) {
+      console.error("Error during registration:", error);
+      setError(error.message || "An unexpected error occurred. Please try again.");
     }
   };
 
