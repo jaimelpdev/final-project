@@ -11,6 +11,7 @@
   "dependencies": {
     "i18next": "^24.2.3",
     "next": "15.2.0",
+    "next-auth": "^4.24.11",
     "next-i18next": "^15.4.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
