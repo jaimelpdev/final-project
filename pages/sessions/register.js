@@ -21,29 +21,35 @@ const RegisterPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log("Data sended to backend:", formData);
+    const csrfToken = document
+      .querySelector('meta[name="csrf-token"]')
+      ?.getAttribute("content");
 
     try {
-      const response = await fetch("/api/register", {
+      const response = await fetch("http://localhost:8000/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "X-CSRF-TOKEN": csrfToken,
         },
-        body: JSON.stringify(formData),
+        credentials: "include",
+        body: JSON.stringify({
+          name: "John Doe",
+          email: "john.doe@example.com",
+          password: "password123",
+        }),
       });
 
       if (!response.ok) {
         const errorData = await response.json();
-        console.error("Server error:", errorData);
-        throw new Error(errorData.message || "Failed to register");
+        console.error("Validation errors:", errorData.errors);
+        throw new Error("Failed to register. Please try again.");
       }
 
-      const data = await response.json();
-      console.log("Registration successful:", data);
-      // Redirect to the login page or show a success message
+      const result = await response.json();
+      console.log(result);
     } catch (error) {
-      console.error("Error during registration:", error);
-      setError(error.message || "An unexpected error occurred. Please try again.");
+      console.error(error);
     }
   };
 

@@ -14,6 +14,7 @@ export default function Home() {
   return (
     <div>
       <Header />
+      <meta name="csrf-token" content="{{ csrf_token() }}"></meta>
       <h2 className="subtitle">{t("Welcome to ByteMasters!")}</h2>
       <p className="presentationText">
         {t(
