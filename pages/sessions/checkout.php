@@ -2,15 +2,14 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-    echo "Debes iniciar sesión para realizar el pago.";
+    echo "You must be logged in to proceed to checkout.";
     exit;
 }
 
 if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
-    $user_email = "usuario@example.com"; // Recuperar el correo del usuario desde la base de datos
-    echo "Gracias por tu compra. Los detalles se enviarán a tu correo: $user_email.";
-    // Aquí puedes procesar el pedido y limpiar el carrito
+    $user_email = "usuario@example.com";
+    echo "Thank you for your purchase. Your order will be processed shortly and sent to your email.";
     $_SESSION['cart'] = [];
 } else {
-    echo "Tu carrito está vacío.";
+    echo "Your cart is empty.";
 }

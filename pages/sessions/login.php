@@ -1,13 +1,12 @@
 <?php
-// filepath: d:\ProyectoClase\final-project\pages\sessions\login.php
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $email = $_POST['email'];
-  $password = $_POST['password'];
+  $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+  $name = $_POST['name'];
 
-  // Conexión a la base de datos
-  $conn = new mysqli('localhost', 'root', '', 'mi_base_de_datos');
+  $conn = new mysqli('localhost', 'root', '', 'mi_base_de_datos_usuarios');
 
   if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
@@ -23,14 +22,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['user_id'] = $id;
     $_SESSION['user_name'] = $name;
 
-    // Recuperar el carrito del usuario
     if (!isset($_SESSION['cart'])) {
       $_SESSION['cart'] = [];
     }
 
-    echo "Inicio de sesión exitoso. Bienvenido, $name.";
+    echo "<script>
+    sessionStorage.setItem('user_name', '$name');
+    window.location.href = '/index.js';
+    </script>";
+
+    echo "Log in succesful, $name. Redirecting to the main page...";
+    header("Location: http://localhost:3000");
+    exit;
   } else {
-    echo "Correo o contraseña incorrectos.";
+    echo "Email or password are wrong.";
   }
 
   $stmt->close();
@@ -44,16 +49,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar Sesión</title>
+  <title>Log in</title>
 </head>
 
 <body>
   <form method="POST" action="login.php">
-    <label for="email">Correo:</label>
+    <label for="email">Email:</label>
     <input type="email" id="email" name="email" required>
-    <label for="password">Contraseña:</label>
+    <label for="password">Password:</label>
     <input type="password" id="password" name="password" required>
-    <button type="submit">Iniciar Sesión</button>
+    <button type="submit">Log in</button>
   </form>
 </body>
 

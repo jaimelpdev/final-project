@@ -73,6 +73,28 @@ a:hover {
   transition: transform 0.3s ease;
 }
 
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logoutButton,
+.loginButton {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logoutButton:hover,
+.loginButton:hover {
+  background-color: #1d4ed8;
+}
+
 .categoriesHeader {
   padding: 0.5rem 1rem;
   font-size: 1.5rem;
@@ -127,7 +149,7 @@ h2#title {
 
 .cart-icon {
   position: fixed;
-  top:5px;
+  top: 5px;
   right: 20px;
   z-index: 1001;
   background: #2563eb;
@@ -491,7 +513,8 @@ button:hover {
   gap: 12px;
 }
 
-.empty-cart, .checkout {
+.empty-cart,
+.checkout {
   padding: 8px 16px;
   border: none;
   border-radius: 4px;

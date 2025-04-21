@@ -1,5 +1,4 @@
 <?php
-// filepath: d:\ProyectoClase\final-project\pages\sessions\register.php
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -7,21 +6,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-    // Aquí puedes conectar con tu base de datos
-    // Ejemplo de conexión:
-    $conn = new mysqli('localhost', 'root', '', 'mi_base_de_datos');
+    $conn = new mysqli('localhost', 'root', '', 'mi_base_de_datos_usuarios');
 
-    if ($conn->connect_error) {
-        die("Error de conexión: " . $conn->connect_error);
-    }
+    $checkEmailQuery = "SELECT id FROM users WHERE email = ?";
+    $stmt = $conn->prepare($checkEmailQuery);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
 
-    $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $name, $email, $password);
-
-    if ($stmt->execute()) {
-        echo "Registro exitoso. Ahora puedes iniciar sesión.";
+    if ($stmt->num_rows > 0) {
+        echo "The email is already registered. Please use a different one.";
     } else {
-        echo "Error al registrar: " . $stmt->error;
+        $insertQuery = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
+        $stmt = $conn->prepare($insertQuery);
+        $stmt->bind_param("sss", $name, $email, $password);
+
+        if ($stmt->execute()) {
+
+            header("Location: http://localhost:3000");
+        } else {
+            echo "Error registering the user: " . $stmt->error;
+        }
     }
 
     $stmt->close();
@@ -31,20 +36,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
+    <title>Sign in</title>
 </head>
+
 <body>
     <form method="POST" action="register.php">
-        <label for="name">Nombre:</label>
+        <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
-        <label for="email">Correo:</label>
+        <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
-        <label for="password">Contraseña:</label>
+        <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
-        <button type="submit">Registrar</button>
+        <button type="submit">Sign in</button>
     </form>
 </body>
+
 </html>
