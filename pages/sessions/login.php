@@ -23,6 +23,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $_SESSION['user_id'] = $id;
       $_SESSION['user_name'] = $name;
 
+      // Recuperate the cart items for the user
+      $cartQuery = "SELECT product_id FROM carts WHERE user_id = ?";
+      $cartStmt = $conn->prepare($cartQuery);
+      $cartStmt->bind_param("i", $id);
+      $cartStmt->execute();
+      $cartResult = $cartStmt->get_result();
+
+      $_SESSION['cart'] = [];
+      while ($row = $cartResult->fetch_assoc()) {
+        $_SESSION['cart'][] = $row['product_id'];
+      }
+
       if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = [];
       }
