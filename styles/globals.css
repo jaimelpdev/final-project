@@ -39,19 +39,91 @@ body {
 }
 
 .header {
+  height: 12rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
   background-color: white;
   color: black;
-  align-items: center;
-  padding: 1rem;
-  height: 13rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
-.headerCenter {
-  flex-grow: 1;
-  text-align: right;
-  padding-right: 16.5rem;
+.header-left {
+  position: absolute;
+  left: 2rem;
+}
+
+.header-left .pageLogo {
+  width: 120px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.header-left .pageLogo:hover {
+  transform: scale(1.1);
+}
+
+.header-center {
+  text-align: center;
+  flex: 1;
+  margin-left: 30rem;
+}
+
+.header-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: black;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.menu li a:hover {
+  color: #2563eb;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.userSection span {
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
+.loginButton,
+.signupButton,
+.logoutButton {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.loginButton:hover,
+.signupButton:hover,
+.logoutButton:hover {
+  background-color: #1d4ed8;
 }
 
 a {
@@ -71,28 +143,6 @@ a:hover {
 .pageLogo:hover {
   transform: scale(1.1);
   transition: transform 0.3s ease;
-}
-
-.userSection {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.logoutButton,
-.loginButton {
-  background-color: #2563eb;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.logoutButton:hover,
-.loginButton:hover {
-  background-color: #1d4ed8;
 }
 
 .categoriesHeader {
@@ -285,44 +335,6 @@ button:hover {
   padding: 0.5rem 1rem;
   margin: 2rem !important;
   font-size: 1rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
-
-@media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    height: auto;
-  }
-
-  .headerCenter {
-    padding-right: 0rem;
-  }
-
-  .pageLogo {
-    align-self: flex-start;
-    margin-left: 0;
-  }
-
-  .categoriesHeader {
-    padding-right: 0;
-    padding-bottom: 1rem;
-  }
-}
-
-/* Media Queries for larger screens */
-@media (min-width: 768px) {
-  .pageLogo {
-    margin-left: 60%;
-    margin-right: auto;
-    display: block;
-  }
 }
 
 /* Cart Sidebar Styles */
@@ -554,4 +566,77 @@ button:hover {
 
 .cart-sidebar.show ~ .content {
   margin-right: 400px;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .header-left {
+    position: static;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .header-center {
+    margin-left: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .menu {
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .header-right {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .pageLogo {
+    width: 80px;
+  }
+
+  .header-title {
+    font-size: 1.5rem;
+  }
+
+  .menu li a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0.5rem;
+  }
+
+  .header-title {
+    font-size: 1.2rem;
+  }
+
+  .menu li a {
+    font-size: 0.9rem;
+  }
+
+  .loginButton,
+  .signupButton,
+  .logoutButton {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
 }

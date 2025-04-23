@@ -3,8 +3,8 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $email = $_POST['email'];
-  $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-  $name = $_POST['name'];
+  $password = $_POST['password'];
+  $name = isset($_POST['name']) ? $_POST['name'] : null;
 
   $conn = new mysqli('localhost', 'root', '', 'mi_base_de_datos_usuarios');
 
@@ -18,24 +18,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $stmt->store_result();
   $stmt->bind_result($id, $name, $hashed_password);
 
-  if ($stmt->fetch() && password_verify($password, $hashed_password)) {
-    $_SESSION['user_id'] = $id;
-    $_SESSION['user_name'] = $name;
+  if ($stmt->fetch()) {
+    echo "Name: " . htmlspecialchars($name);
+    if (password_verify($password, $hashed_password)) {
+      $_SESSION['user_id'] = $id;
+      $_SESSION['user_name'] = $name;
 
-    if (!isset($_SESSION['cart'])) {
-      $_SESSION['cart'] = [];
+      if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = [];
+      }
+
+      echo "<script>
+      window.location.href = 'http://localhost:3000';
+      </script>";
+      exit;
+    } else {
+      echo "The password is incorrect.";
     }
-
-    echo "<script>
-    sessionStorage.setItem('user_name', '$name');
-    window.location.href = '/index.js';
-    </script>";
-
-    echo "Log in succesful, $name. Redirecting to the main page...";
-    header("Location: http://localhost:3000");
-    exit;
   } else {
-    echo "Email or password are wrong.";
+    echo "The email does not exist.";
   }
 
   $stmt->close();
@@ -54,6 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
   <form method="POST" action="login.php">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required>
     <label for="password">Password:</label>
