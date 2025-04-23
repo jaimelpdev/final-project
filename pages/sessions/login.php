@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $stmt->bind_result($id, $name, $hashed_password);
 
   if ($stmt->fetch()) {
-    echo "Name: " . htmlspecialchars($name);
     if (password_verify($password, $hashed_password)) {
       $_SESSION['user_id'] = $id;
       $_SESSION['user_name'] = $name;
@@ -27,6 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = [];
       }
+
+      setcookie("user_name", $name, time() + 3600, "/"); // Expires in 1 hour
 
       echo "<script>
       window.location.href = 'http://localhost:3000';

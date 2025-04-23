@@ -8,40 +8,28 @@ const Header = () => {
   const [userName, setUserName] = useState(null);
 
   useEffect(() => {
-    // Simula obtener el nombre del usuario desde una API o sesión
+    // Obtain the user name from the server
+    const fetchUserName = async () => {
+      try {
+        const response = await fetch("/api/getUserName");
+        if (response.ok) {
+          const data = await response.json();
+          sessionStorage.setItem("user_name", data.user_name);
+          setUserName(data.user_name);
+        } else {
+          console.error("User not authenticated");
+        }
+      } catch (error) {
+        console.error("Error fetching user name:", error);
+      }
+    };
+
     const user = sessionStorage.getItem("user_name");
     if (!user) {
-      // Si no hay usuario en sessionStorage, intenta obtenerlo desde el servidor
-      fetch("/api/getUserName") // Cambia esto por tu endpoint real
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.user_name) {
-            sessionStorage.setItem("user_name", data.user_name);
-            setUserName(data.user_name);
-          }
-        });
-    }
-  }, []);
-
-  useEffect(() => {
-    // Obtain the user name from sessionStorage when the component mounts
-    const user = sessionStorage.getItem("user_name");
-    if (user) {
+      fetchUserName();
+    } else {
       setUserName(user);
     }
-
-    // Listen for changes in sessionStorage
-    const handleStorageChange = () => {
-      const updatedUser = sessionStorage.getItem("user_name");
-      setUserName(updatedUser);
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
   }, []);
 
   const handleLogout = () => {
