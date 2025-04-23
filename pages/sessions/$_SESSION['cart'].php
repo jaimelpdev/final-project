@@ -25,9 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
     if ($stmt->execute()) {
         // Update the session cart
         $_SESSION['cart'][] = $product_id;
-        echo "Product added to the cart.";
+        echo "Producto añadido al carrito correctamente.";
     } else {
-        echo "Error: " . $stmt->error;
+        error_log("Error to add a product into cart: " . $stmt->error);
+        echo "Error to add a product into cart.";
     }
 }
 
@@ -41,6 +42,6 @@ $result = $stmt->get_result();
 $cart_items = [];
 while ($row = $result->fetch_assoc()) {
     $cart_items[] = $row['product_id'];
-}
 
-echo "Products in the cart: " . implode(", ", $cart_items);
+    echo "Products in the cart: " . implode(", ", $cart_items);
+}
