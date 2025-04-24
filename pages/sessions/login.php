@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $password = $_POST['password'];
   $name = isset($_POST['name']) ? $_POST['name'] : null;
 
-  $conn = new mysqli('localhost', 'root', '', 'mi_base_de_datos_usuarios');
+  $conn = new mysqli('localhost', 'root', '', 'my_database');
 
   if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);

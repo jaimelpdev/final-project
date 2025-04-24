@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 
 // Conect to to the database
-$conn = new mysqli('localhost', 'root', '', 'mi_base_de_datos_usuarios');
+$conn = new mysqli('localhost', 'root', '', 'my_database');
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }

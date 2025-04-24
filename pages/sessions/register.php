@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-    $conn = new mysqli('localhost', 'root', '', 'mi_base_de_datos_usuarios');
+    $conn = new mysqli('localhost', 'root', '', 'my_database');
 
     $checkEmailQuery = "SELECT id FROM users WHERE email = ?";
     $stmt = $conn->prepare($checkEmailQuery);
