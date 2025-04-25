@@ -2,17 +2,32 @@ import React, { createContext, useState, useContext } from "react";
 
 const CartContext = createContext();
 
-export const CartProvider = ({ children }) => {
+export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [showCart, setShowCart] = useState(false);
 
   const toggleCart = () => {
     setShowCart(!showCart);
+
+    useEffect(() => {
+      const fetchCart = async () => {
+        const response = await fetch("/api/cart");
+        const data = await response.json();
+        setCart(data);
+      };
+
+      fetchCart();
+    }, []);
   };
 
-  const addToCart = (product, price, category) => {
+  const addToCart = async (product, price, category) => {
+    await fetch("/api/cart", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ product_id }),
+    });
+
     setCart((prevCart) => {
-      // Verify if the item already exists in the cart
       const existingItem = prevCart.find(
         (item) => item.product === product && item.category === category
       );
@@ -28,8 +43,6 @@ export const CartProvider = ({ children }) => {
               }
             : item
         );
-
-        const toggleCart = () => setShowCart(!showCart);
       } else {
         // Add a new item to the cart
         return [
@@ -40,39 +53,17 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  const decrementFromCart = (product, category) => {
-    setCart((prevCart) =>
-      prevCart
-        .map((item) =>
-          item.product === product && item.category === category
-            ? {
-                ...item,
-                quantity: item.quantity - 1,
-                totalPrice: item.totalPrice - item.price,
-              }
-            : item
-        )
-        .filter((item) => item.quantity > 0)
-    );
-  };
-
-  const removeFromCart = (product, category) => {
-    setCart((prevCart) =>
-      prevCart.filter(
-        (item) => !(item.product === product && item.category === category)
-      )
-    );
-  };
-
-  const emptyCart = () => setCart([]);
-
   return (
-    <CartContext.Provider
-      value={{ cart, addToCart, toggleCart, showCart }}
-    >
+    <CartContext.Provider value={{ cart, addToCart, toggleCart, showCart }}>
       {children}
     </CartContext.Provider>
   );
-};
+}
 
-export const useCart = () => useContext(CartContext);
+export function useCart() {
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error("useCart must be used within a CartProvider");
+  }
+  return context;
+}

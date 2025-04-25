@@ -1,6 +1,20 @@
 <?php
 session_start();
 
+$user_id = $_SESSION['user_id'];
+
+// Recuperate the cart items for the user
+$query = "SELECT product_id FROM carts WHERE user_id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$_SESSION['cart'] = [];
+while ($row = $result->fetch_assoc()) {
+  $_SESSION['cart'][] = $row['product_id'];
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $email = $_POST['email'];
   $password = $_POST['password'];
