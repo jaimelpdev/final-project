@@ -36,7 +36,7 @@ const Header = () => {
     sessionStorage.clear();
     setUserName(null);
     window.location.href =
-      "http://localhost/ProyectoClase/final-project/pages/sessions/login.php";
+      "/";
   };
 
   return (
