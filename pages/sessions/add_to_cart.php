@@ -24,6 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
     $stmt->bind_param("ii", $user_id, $product_id);
 
     if ($stmt->execute()) {
+        // Update the session cart array
+        $_SESSION['cart'][] = $product_id;
         echo "Producto añadido al carrito correctamente.";
     } else {
         echo "Error al añadir el producto al carrito: " . $stmt->error;
