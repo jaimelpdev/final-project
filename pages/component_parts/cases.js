@@ -7,54 +7,63 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const products = [
   {
+    id: 61,
     name: "Cooler Master MasterBox Q300L",
     price: 60,
     image: "/imgs/cases/cooler-master-q300l.webp",
     type: "Micro ATX",
   },
   {
+    id: 62,
     name: "NZXT H510",
     price: 80,
     image: "/imgs/cases/nzxt-h510.webp",
     type: "Mid Tower",
   },
   {
+    id: 63,
     name: "Phanteks Eclipse P400A",
     price: 90,
     image: "/imgs/cases/phanteks-eclipse-p400a.webp",
     type: "Mid Tower",
   },
   {
+    id: 64,
     name: "Corsair 4000D Airflow",
     price: 95,
     image: "/imgs/cases/corsair-4000d-airflow.webp",
     type: "Mid Tower",
   },
   {
+    id: 65,
     name: "Fractal Design Meshify C",
     price: 110,
     image: "/imgs/cases/fractal-meshify-c.webp",
     type: "Mid Tower",
   },
   {
+    id: 66,
     name: "Thermaltake Core P3",
     price: 150,
     image: "/imgs/cases/thermaltake-core-p3.webp",
     type: "Open Frame",
   },
   {
+    id: 67,
     name: "ASUS TUF GT501",
     price: 160,
     image: "/imgs/cases/asus-tuf-gt501.webp",
     type: "Mid Tower",
   },
   {
+    id: 68,
     name: "Be Quiet! Silent Base 802",
     price: 180,
     image: "/imgs/cases/bequiet-silent-base-802.webp",
     type: "Mid Tower",
   },
   {
+    id: 69,
     name: "Lian Li PC-O11 Dynamic",
     price: 200,
     image: "/imgs/cases/lian-li-pc-o11-dynamic.webp",

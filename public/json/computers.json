@@ -1,7 +1,7 @@
 {
   "computers": [
     {
-      "id": 1,
+      "id": 106,
       "name": "Inspiron 3880",
       "brand": "Dell",
       "image": "/imgs/computers/dell_inspiron_3880.webp",
@@ -15,7 +15,7 @@
       "price": 500
     },
     {
-      "id": 2,
+      "id": 107,
       "name": "Pavilion TP01",
       "brand": "HP",
       "image": "/imgs/computers/hp_pavilion_tp01.webp",
@@ -29,7 +29,7 @@
       "price": 600
     },
     {
-      "id": 3,
+      "id": 108,
       "name": "IdeaCentre 5",
       "brand": "Lenovo",
       "image": "/imgs/computers/lenovo_ideacentre_5.webp",
@@ -43,7 +43,7 @@
       "price": 700
     },
     {
-      "id": 4,
+      "id": 109,
       "name": "Aspire TC-895",
       "brand": "Acer",
       "image": "/imgs/computers/acer_aspire_tc_895.webp",
@@ -57,7 +57,7 @@
       "price": 550
     },
     {
-      "id": 5,
+      "id": 110,
       "name": "ROG Strix GA15",
       "brand": "ASUS",
       "image": "/imgs/computers/asus_rog_strix_ga15.webp",
@@ -71,7 +71,7 @@
       "price": 1200
     },
     {
-      "id": 6,
+      "id": 111,
       "name": "XPS 8940",
       "brand": "Dell",
       "image": "/imgs/computers/dell_xps_8940.webp",
@@ -85,7 +85,7 @@
       "price": 1300
     },
     {
-      "id": 7,
+      "id": 112,
       "name": "Envy TE01",
       "brand": "HP",
       "image": "/imgs/computers/hp_envy_te01.webp",
@@ -99,7 +99,7 @@
       "price": 1100
     },
     {
-      "id": 8,
+      "id": 113,
       "name": "Legion T5",
       "brand": "Lenovo",
       "image": "/imgs/computers/lenovo_legion_t5.webp",
@@ -113,7 +113,7 @@
       "price": 1400
     },
     {
-      "id": 9,
+      "id": 114,
       "name": "Predator Orion 3000",
       "brand": "Acer",
       "image": "/imgs/computers/acer_predator_orion_3000.webp",
@@ -127,7 +127,7 @@
       "price": 1300
     },
     {
-      "id": 10,
+      "id": 115,
       "name": "ROG Strix GA35",
       "brand": "ASUS",
       "image": "/imgs/computers/asus_rog_strix_ga35.webp",
@@ -141,7 +141,7 @@
       "price": 1999
     },
     {
-      "id": 11,
+      "id": 116,
       "name": "Inspiron 3881",
       "brand": "Dell",
       "image": "/imgs/computers/dell_inspiron_3881.webp",
@@ -155,7 +155,7 @@
       "price": 400
     },
     {
-      "id": 12,
+      "id": 117,
       "name": "Pavilion TP02",
       "brand": "HP",
       "image": "/imgs/computers/hp_pavilion_tp02.webp",
@@ -169,7 +169,7 @@
       "price": 450
     },
     {
-      "id": 13,
+      "id": 118,
       "name": "IdeaCentre 3",
       "brand": "Lenovo",
       "image": "/imgs/computers/lenovo_ideacentre_3.webp",
@@ -183,7 +183,7 @@
       "price": 500
     },
     {
-      "id": 14,
+      "id": 119,
       "name": "Aspire TC-885",
       "brand": "Acer",
       "image": "/imgs/computers/acer_aspire_tc_885.webp",
@@ -197,7 +197,7 @@
       "price": 400
     },
     {
-      "id": 15,
+      "id": 120,
       "name": "ROG Strix GA15DH",
       "brand": "ASUS",
       "image": "/imgs/computers/asus_rog_strix_ga15dh.webp",
@@ -211,7 +211,7 @@
       "price": 900
     },
     {
-      "id": 16,
+      "id": 121,
       "name": "XPS 8930",
       "brand": "Dell",
       "image": "/imgs/computers/dell_xps_8930.webp",
@@ -225,7 +225,7 @@
       "price": 1800
     },
     {
-      "id": 17,
+      "id": 122,
       "name": "Envy TE02",
       "brand": "HP",
       "image": "/imgs/computers/hp_envy_te02.webp",
@@ -239,7 +239,7 @@
       "price": 1600
     },
     {
-      "id": 18,
+      "id": 123,
       "name": "Legion T7",
       "brand": "Lenovo",
       "image": "/imgs/computers/lenovo_legion_t7.webp",
@@ -253,7 +253,7 @@
       "price": 2100
     },
     {
-      "id": 19,
+      "id": 124,
       "name": "Predator Orion 5000",
       "brand": "Acer",
       "image": "/imgs/computers/acer_predator_orion_5000.webp",
@@ -267,7 +267,7 @@
       "price": 2200
     },
     {
-      "id": 20,
+      "id": 125,
       "name": "ROG Strix GA35DX",
       "brand": "ASUS",
       "image": "/imgs/computers/asus_rog_strix_ga35dx.webp",

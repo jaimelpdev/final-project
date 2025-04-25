@@ -7,54 +7,63 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const products = [
   {
+    id: 97,
     name: "ARCTIC F12",
     price: 10,
     image: "/imgs/fans/arctic-f12.webp",
     type: "120mm",
   },
   {
+    id: 98,
     name: "Cooler Master SickleFlow 120",
     price: 15,
     image: "/imgs/fans/cooler-master-sickleflow-120.webp",
     type: "120mm",
   },
   {
+    id: 99,
     name: "Phanteks PH-F140MP",
     price: 20,
     image: "/imgs/fans/phanteks-ph-f140mp.webp",
     type: "140mm",
   },
   {
+    id: 100,
     name: "Corsair ML120 Pro",
     price: 25,
     image: "/imgs/fans/corsair-ml120-pro.webp",
     type: "120mm",
   },
   {
+    id: 101,
     name: "be quiet! Silent Wings 3",
     price: 28,
     image: "/imgs/fans/bequiet-silent-wings-3.webp",
     type: "140mm",
   },
   {
+    id: 102,
     name: "Lian Li UNI Fan SL120",
     price: 30,
     image: "/imgs/fans/lian-li-uni-fan-sl120.webp",
     type: "120mm",
   },
   {
+    id: 103,
     name: "NZXT Aer RGB 2",
     price: 35,
     image: "/imgs/fans/nzxt-aer-rgb-2.webp",
     type: "120mm",
   },
   {
+    id: 104,
     name: "Thermaltake Riing Plus 12",
     price: 40,
     image: "/imgs/fans/thermaltake-riing-plus-12.webp",
     type: "120mm",
   },
   {
+    id: 105,
     name: "Noctua NF-A12x25",
     price: 50,
     image: "/imgs/fans/noctua-nf-a12x25.webp",

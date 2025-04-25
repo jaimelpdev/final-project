@@ -1,7 +1,7 @@
 {
   "notebooks": [
     {
-      "id": 1,
+      "id": 126,
       "name": "MacBook Air",
       "brand": "Apple",
       "image": "/imgs/notebooks/apple-macbook-air.webp",
@@ -15,7 +15,7 @@
       "price": 999
     },
     {
-      "id": 2,
+      "id": 127,
       "name": "MacBook Air M1",
       "brand": "Apple",
       "image": "/imgs/notebooks/apple-macbook-air-m1.webp",
@@ -29,7 +29,7 @@
       "price": 1099
     },
     {
-      "id": 3,
+      "id": 128,
       "name": "MacBook Pro",
       "brand": "Apple",
       "image": "/imgs/notebooks/apple-macbook-pro.webp",
@@ -43,7 +43,7 @@
       "price": 1299
     },
     {
-      "id": 4,
+      "id": 129,
       "name": "MacBook Pro 16",
       "brand": "Apple",
       "image": "/imgs/notebooks/apple-macbook-pro-16.webp",
@@ -57,7 +57,7 @@
       "price": 2399
     },
     {
-      "id": 5,
+      "id": 130,
       "name": "Inspiron 15",
       "brand": "Dell",
       "image": "/imgs/notebooks/dell-inspiron-15.webp",
@@ -71,7 +71,7 @@
       "price": 599
     },
     {
-      "id": 6,
+      "id": 131,
       "name": "Inspiron 14",
       "brand": "Dell",
       "image": "/imgs/notebooks/dell-inspiron-14.webp",
@@ -85,7 +85,7 @@
       "price": 549
     },
     {
-      "id": 7,
+      "id": 132,
       "name": "XPS 13",
       "brand": "Dell",
       "image": "/imgs/notebooks/dell-xps-13.webp",
@@ -99,7 +99,7 @@
       "price": 1399
     },
     {
-      "id": 8,
+      "id": 133,
       "name": "XPS 15",
       "brand": "Dell",
       "image": "/imgs/notebooks/dell-xps-15.webp",
@@ -113,7 +113,7 @@
       "price": 1799
     },
     {
-      "id": 9,
+      "id": 134,
       "name": "ThinkPad T14",
       "brand": "Lenovo",
       "image": "/imgs/notebooks/lenovo-thinkpad-t14.webp",
@@ -127,7 +127,7 @@
       "price": 999
     },
     {
-      "id": 10,
+      "id": 135,
       "name": "ThinkPad L14",
       "brand": "Lenovo",
       "image": "/imgs/notebooks/lenovo-thinkpad-l14.webp",
@@ -141,7 +141,7 @@
       "price": 899
     },
     {
-      "id": 11,
+      "id": 136,
       "name": "ThinkPad X1 Carbon",
       "brand": "Lenovo",
       "image": "/imgs/notebooks/lenovo-thinkpad-x1-carbon.webp",
@@ -155,7 +155,7 @@
       "price": 1499
     },
     {
-      "id": 12,
+      "id": 137,
       "name": "ThinkPad X1 Yoga",
       "brand": "Lenovo",
       "image": "/imgs/notebooks/lenovo-thinkpad-x1-yoga.webp",
@@ -169,7 +169,7 @@
       "price": 1599
     },
     {
-      "id": 13,
+      "id": 138,
       "name": "Surface Go 2",
       "brand": "Microsoft",
       "image": "/imgs/notebooks/microsoft-surface-go-2.webp",
@@ -183,7 +183,7 @@
       "price": 399
     },
     {
-      "id": 14,
+      "id": 139,
       "name": "Surface Pro 7",
       "brand": "Microsoft",
       "image": "/imgs/notebooks/microsoft-surface-pro-7.webp",
@@ -197,7 +197,7 @@
       "price": 749
     },
     {
-      "id": 15,
+      "id": 140,
       "name": "Surface Laptop 4",
       "brand": "Microsoft",
       "image": "/imgs/notebooks/microsoft-surface-laptop-4.webp",
@@ -211,7 +211,7 @@
       "price": 1299
     },
     {
-      "id": 16,
+      "id": 141,
       "name": "Surface Book 3",
       "brand": "Microsoft",
       "image": "/imgs/notebooks/microsoft-surface-book-3.webp",
@@ -225,7 +225,7 @@
       "price": 1599
     },
     {
-      "id": 17,
+      "id": 142,
       "name": "ZenBook 14",
       "brand": "ASUS",
       "image": "/imgs/notebooks/asus-zenbook-14.webp",
@@ -239,7 +239,7 @@
       "price": 1199
     },
     {
-      "id": 18,
+      "id": 143,
       "name": "VivoBook S15",
       "brand": "ASUS",
       "image": "/imgs/notebooks/asus-vivobook-s15.webp",
@@ -253,7 +253,7 @@
       "price": 699
     },
     {
-      "id": 19,
+      "id": 144,
       "name": "ROG Zephyrus G14",
       "brand": "ASUS",
       "image": "/imgs/notebooks/asus-rog-zephyrus-g14.webp",
@@ -267,7 +267,7 @@
       "price": 1499
     },
     {
-      "id": 20,
+      "id": 145,
       "name": "TUF Gaming A15",
       "brand": "ASUS",
       "image": "/imgs/notebooks/asus-tuf-gaming-a15.webp",

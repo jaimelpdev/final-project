@@ -7,54 +7,63 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const products = [
   {
+    id: 70,
     name: "EVGA 600 W1 600W",
     price: 50,
     image: "/imgs/power/evga-600w1.webp",
     efficiency: "80+ White"
   },
   {
+    id: 71,
     name: "Cooler Master MWE 550W",
     price: 60,
     image: "/imgs/power/cooler-master-mwe-550.webp",
     efficiency: "80+ Bronze"
   },
   {
+    id: 72,
     name: "Thermaltake Smart 700W",
     price: 70,
     image: "/imgs/power/thermaltake-smart-700w.webp",
     efficiency: "80+ White"
   },
   {
+    id: 73,
     name: "Corsair CX550F RGB 550W",
     price: 80,
     image: "/imgs/power/corsair-cx550f-rgb.webp",
     efficiency: "80+ Bronze"
   },
   {
+    id: 74,
     name: "Corsair RM750x 750W",
     price: 120,
     image: "/imgs/power/corsair-rm750x.webp",
     efficiency: "80+ Gold"
   },
   {
+    id: 75,
     name: "NZXT C750",
     price: 130,
     image: "/imgs/power/nzxt-c750.webp",
     efficiency: "80+ Gold"
   },
   {
+    id: 76,
     name: "Seasonic Focus GX-850 850W",
     price: 140,
     image: "/imgs/power/seasonic-focus-gx-850.webp",
     efficiency: "80+ Gold"
   },
   {
+    id: 77,
     name: "Be Quiet! Straight Power 11 750W",
     price: 160,
     image: "/imgs/power/bequiet-straight-power-11.webp",
     efficiency: "80+ Platinum"
   },
   {
+    id: 78,
     name: "ASUS ROG Thor 850W",
     price: 200,
     image: "/imgs/power/asus-rog-thor-850w.webp",

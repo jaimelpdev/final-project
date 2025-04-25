@@ -7,12 +7,14 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const products = [
   {
+    id: 79,
     name: "ASUS Prime H510M-E",
     price: 90,
     image: "/imgs/motherboards/asus-prime-h510m-e.webp",
     type: "Micro-ATX",
   },
   {
+    id: 80,
     name: "ASRock B450M Steel Legend",
     price: 100,
     image: "/imgs/motherboards/asrock-b450m-steel-legend.webp",
@@ -20,42 +22,49 @@ const products = [
   },
 
   {
+    id: 81,
     name: "Gigabyte B550 Aorus Pro",
     price: 170,
     image: "/imgs/motherboards/gigabyte-b550-aorus-pro.webp",
     type: "ATX",
   },
   {
+    id: 82,
     name: "MSI MAG B550 Tomahawk",
     price: 180,
     image: "/imgs/motherboards/msi-mag-b550-tomahawk.webp",
     type: "ATX",
   },
   {
+    id: 83,
     name: "ASUS TUF Gaming B550-PLUS",
     price: 200,
     image: "/imgs/motherboards/asus-tuf-gaming-b550-plus.webp",
     type: "ATX",
   },
   {
+    id: 84,
     name: "ASRock X570 Taichi",
     price: 350,
     image: "/imgs/motherboards/asrock-x570-taichi.webp",
     type: "ATX",
   },
   {
+    id: 85,
     name: "MSI MPG Z690 Carbon WiFi",
     price: 400,
     image: "/imgs/motherboards/msi-mpg-z690-carbon-wifi.webp",
     type: "ATX",
   },
   {
+    id: 86,
     name: "Gigabyte Z690 Aorus Master",
     price: 450,
     image: "/imgs/motherboards/gigabyte-z690-aorus-master.webp",
     type: "ATX",
   },
   {
+    id: 87,
     name: "ASUS ROG Strix Z790-E",
     price: 500,
     image: "/imgs/motherboards/asus-rog-strix-z790-e.webp",
