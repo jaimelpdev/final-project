@@ -1,28 +1,12 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 session_start();
 require_once '../../lib/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
     $product_id = intval($_POST['product_id']);
-    $user_id = intval($_SESSION['user_id']);
+    $user_id = intval($_SESSION['user_id']); // Asegúrate de que el usuario esté autenticado
 
-    // Verificar que el usuario existe
-    $userCheckQuery = "SELECT id FROM users WHERE id = ?";
-    $userStmt = $conn->prepare($userCheckQuery);
-    $userStmt->bind_param("i", $user_id);
-    $userStmt->execute();
-    $userResult = $userStmt->get_result();
-
-    if ($userResult->num_rows === 0) {
-        echo "El usuario no existe.";
-        exit;
-    }
-
-    // Verify that the product exists
+    // Verify if the product exists in the database
     $productCheckQuery = "SELECT id FROM products WHERE id = ?";
     $productStmt = $conn->prepare($productCheckQuery);
     $productStmt->bind_param("i", $product_id);
