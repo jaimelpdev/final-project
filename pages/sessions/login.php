@@ -1,30 +1,17 @@
 <?php
 session_start();
 
-$user_id = $_SESSION['user_id'];
+require_once '../../lib/db.php';
 
-// Recuperate the cart items for the user
-$query = "SELECT product_id FROM carts WHERE user_id = ?";
-$stmt = $conn->prepare($query);
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$result = $stmt->get_result();
+$conn = new mysqli('localhost', 'root', '', 'my_database');
 
-$_SESSION['cart'] = [];
-while ($row = $result->fetch_assoc()) {
-  $_SESSION['cart'][] = $row['product_id'];
+if ($conn->connect_error) {
+  die("Error de conexión: " . $conn->connect_error);
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $email = $_POST['email'];
   $password = $_POST['password'];
-  $name = isset($_POST['name']) ? $_POST['name'] : null;
-
-  $conn = new mysqli('localhost', 'root', '', 'my_database');
-
-  if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
-  }
 
   $stmt = $conn->prepare("SELECT id, name, password FROM users WHERE email = ?");
   $stmt->bind_param("s", $email);
@@ -37,40 +24,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $_SESSION['user_id'] = $id;
       $_SESSION['user_name'] = $name;
 
-      // Recuperate the cart items for the user
-      $cartQuery = "SELECT product_id FROM carts WHERE user_id = ?";
-      $cartStmt = $conn->prepare($cartQuery);
-      $cartStmt->bind_param("i", $id);
-      $cartStmt->execute();
-      $cartResult = $cartStmt->get_result();
-
-      $_SESSION['cart'] = [];
-      while ($row = $cartResult->fetch_assoc()) {
-        $_SESSION['cart'][] = $row['product_id'];
-      }
-
-      if (!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = [];
-      }
-
-      setcookie("user_name", $name, time() + 3600, "/"); // Expires in 1 hour
-
-      echo "<script>
-      window.location.href = 'http://localhost:3000';
-      </script>";
+      // Redirigir a la página inicial
+      header("Location: http://localhost:3000");
       exit;
     } else {
-      echo "The password is incorrect.";
+      echo "Error: Contraseña incorrecta.";
+      exit;
     }
   } else {
-    echo "The email does not exist.";
+    echo "Error: Usuario no encontrado.";
+    exit;
   }
 
   $stmt->close();
-  $conn->close();
 }
-?>
 
+if (isset($_SESSION['user_id'])) {
+  $user_id = $_SESSION['user_id'];
+
+  // Recuperar los productos del carrito
+  $query = "SELECT product_id FROM carts WHERE user_id = ?";
+  $stmt = $conn->prepare($query);
+  if (!$stmt) {
+    die("Error en la preparación de la consulta: " . $conn->error);
+  }
+  $stmt->bind_param("i", $user_id);
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  $_SESSION['cart'] = [];
+  while ($row = $result->fetch_assoc()) {
+    $_SESSION['cart'][] = $row['product_id'];
+  }
+
+  $stmt->close();
+}
+
+$conn->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
 

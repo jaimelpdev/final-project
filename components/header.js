@@ -8,35 +8,23 @@ const Header = () => {
   const [userName, setUserName] = useState(null);
 
   useEffect(() => {
-    // Obtain the user name from the server
-    const fetchUserName = async () => {
-      try {
-        const response = await fetch("/api/getUserName");
-        if (response.ok) {
-          const data = await response.json();
-          sessionStorage.setItem("user_name", data.user_name);
+    // Obtenain the user name from the server
+    fetch("/api/getUserName")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.user_name) {
           setUserName(data.user_name);
-        } else {
-          console.error("User not authenticated");
         }
-      } catch (error) {
-        console.error("Error fetching user name:", error);
-      }
-    };
-
-    const user = sessionStorage.getItem("user_name");
-    if (!user) {
-      fetchUserName();
-    } else {
-      setUserName(user);
-    }
+      });
   }, []);
 
   const handleLogout = () => {
-    sessionStorage.clear();
-    setUserName(null);
-    window.location.href =
-      "/";
+    fetch("/api/logout", { method: "POST" })
+      .then(() => {
+        setUserName(null);
+        window.location.href = "http://localhost:3000";
+      })
+      .catch((error) => console.error("Error to logout:", error));
   };
 
   return (
@@ -61,6 +49,7 @@ const Header = () => {
         </ul>
       </div>
       <div className="header-right">
+        <LanguageSwitcher />
         <div className="userSection">
           {userName ? (
             <>
@@ -77,12 +66,11 @@ const Header = () => {
                 <button className="loginButton">{t("Log In")}</button>
               </Link>
               <Link href="http://localhost/ProyectoClase/final-project/pages/sessions/register.php">
-                <button className="signupButton">{t("Sign Up")}</button>
+                <button className="signupButton">{t("Sign In")}</button>
               </Link>
             </>
           )}
         </div>
-        <LanguageSwitcher />
       </div>
     </header>
   );
