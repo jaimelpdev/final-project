@@ -5,6 +5,14 @@ import { useCart } from "../../context/CartContext";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
+}
+
 export default function Notebooks() {
   const [brands, setBrands] = useState([]);
   const [models, setModels] = useState([]);
@@ -70,98 +78,94 @@ export default function Notebooks() {
   return (
     <div>
       <Header />
-      <h2 id="title">{t("Notebooks")}</h2>
-      <div className="cart-header">
-        <Cart />
-      </div>
-      <form id="devices_form" onSubmit={handleSubmit}>
-        <label htmlFor="device_brand">{t("Brand")}:</label>
-        <select id="device_brand" onChange={handleBrandChange}>
-          <option value="">{t("- Please select -")}</option>
-          {brands.map((brand) => (
-            <option key={brand} value={brand}>
-              {brand}
-            </option>
-          ))}
-        </select>
-        <br />
-        <label htmlFor="device_name">{t("Model")}:</label>
-        <select
-          id="device_name"
-          onChange={handleModelChange}
-          disabled={!selectedBrand}
-        >
-          <option value="">{t("- Please select -")}</option>
-          {models.map((model) => (
-            <option key={model.id} value={model.id}>
-              {model.name}
-            </option>
-          ))}
-        </select>
-        <br />
-        <button type="submit" id="device_submit" disabled={!selectedModel}>
-          {t("Show Notebook")}
-        </button>
-      </form>
-      {isSubmitted && displayedModel && (
-        <div id="devicesDetails">
-          <div className="devicesDetailsContainer">
-            <img
-              class="devicesImage"
-              src={displayedModel.image}
-              alt="device's image"
-            />
-            <div className="devicesDescriptionContainer">
-              <p id="devicesDescription">
-                {t(`${displayedModel.name} Description`)}
-              </p>
-              <div id="devicesSpecifications">
-                <h3>{t("Specifications")}:</h3>
-                <ul>
-                  <li>
-                    <b>{t("Processor")}</b>:{" "}
-                    {displayedModel.specifications.processor}
-                  </li>
-                  <li>
-                    <b>RAM</b>: {displayedModel.specifications.ram}
-                  </li>
-                  <li>
-                    <b>{t("Storage")}</b>:{" "}
-                    {displayedModel.specifications.storage}
-                  </li>
-                  <li>
-                    <b>{t("Display")}</b>:{" "}
-                    {displayedModel.specifications.display}
-                  </li>
-                </ul>
-              </div>
-              <p>
-                <b>{t("Price")}</b>: {displayedModel.price}$
-              </p>
-              <button
-                id="addToCart"
-                onClick={() =>
-                  addToCart(
-                    displayedModel.name,
-                    displayedModel.price,
-                    "Notebooks"
-                  )
-                }
-              >
-                {t("Add to Cart")}
-              </button>
-            </div>
-          </div>
+      <div className="content">
+        <div className="cart-header">
+          <h2 id="title">{t("Computers")}</h2>
+          <Cart />
         </div>
-      )}
+        <div className="devices-container">
+          <form id="devices_form" onSubmit={handleSubmit}>
+            <label htmlFor="device_brand">{t("Brand")}:</label>
+            <select id="device_brand" onChange={handleBrandChange}>
+              <option value="">{t("- Please select -")}</option>
+              {brands.map((brand) => (
+                <option key={brand} value={brand}>
+                  {brand}
+                </option>
+              ))}
+            </select>
+            <br />
+            <label htmlFor="device_name">{t("Model")}:</label>
+            <select
+              id="device_name"
+              onChange={handleModelChange}
+              disabled={!selectedBrand}
+            >
+              <option value="">{t("- Please select -")}</option>
+              {models.map((model) => (
+                <option key={model.id} value={model.id}>
+                  {model.name}
+                </option>
+              ))}
+            </select>
+            <br />
+            <button type="submit" id="device_submit" disabled={!selectedModel}>
+              {t("Show Computer")}
+            </button>
+          </form>
+          {isSubmitted && displayedModel && (
+            <div id="devicesDetails">
+              <div className="devicesDetailsContainer">
+                <img
+                  className="devicesImage"
+                  src={displayedModel.image}
+                  alt="device's image"
+                />
+                <div className="devicesDescriptionContainer">
+                  <p id="devicesDescription">
+                    {t(`${displayedModel.name} Description`)}
+                  </p>
+                  <div id="devicesSpecifications">
+                    <h3>{t("Specifications")}:</h3>
+                    <ul>
+                      <li>
+                        <b>{t("Processor")}</b>:{" "}
+                        {displayedModel.specifications.processor}
+                      </li>
+                      <li>
+                        <b>RAM</b>: {displayedModel.specifications.ram}
+                      </li>
+                      <li>
+                        <b>{t("Storage")}</b>:{" "}
+                        {displayedModel.specifications.storage}
+                      </li>
+                      <li>
+                        <b>{t("Graphics")}</b>:{" "}
+                        {displayedModel.specifications.graphics}
+                      </li>
+                    </ul>
+                  </div>
+                  <p>
+                    <b>{t("Price")}</b>: {displayedModel.price}$
+                  </p>
+                  <button
+                    id="addToCart"
+                    onClick={() =>
+                      addToCart(
+                        displayedModel.name,
+                        displayedModel.price,
+                        "Computers"
+                      )
+                    }
+                  >
+                    {t("Add to Cart")}
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
-}
-
-export async function getStaticProps({ locale }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ["common"])),
-    },
-  };
 }

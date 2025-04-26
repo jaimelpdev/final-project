@@ -2,34 +2,34 @@ li {
   list-style-type: none;
 }
 
+.devices-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-left: 10rem;
+  gap: 2rem;
+}
+
+#devices_form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 #devicesDetails {
-  float: left;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 2rem 0.7rem;
+  margin-right: 10rem;
 }
 
-.devicesDetailsContainer,
-form {
+.devicesDetailsContainer {
+  width: auto;
   background-color: rgb(75, 75, 75);
   padding: 2rem;
   border-radius: 0.5rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-  max-width: 35rem;
-  margin: 2rem 1rem;
-}
-
-.devicesDescriptionContainer {
-  margin-top: 1rem;
-  text-align: center;
-}
-
-#devicesImage {
-  width: 30rem !important;
-  height: auto !important;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem;
 }
 
 #devicesSpecifications {
@@ -40,11 +40,14 @@ form {
 form label {
   font-size: 1.125rem;
   margin-bottom: 0.5rem;
+  text-align: left;
 }
 
 form select {
-  width: 45%;
-  margin: 0.2rem 0rem 1rem 2rem;
+  width: 15rem;
+  color: black;
+  background-color: white;
+  text-align: left;
 }
 
 form select,
