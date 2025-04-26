@@ -68,9 +68,6 @@ export default function Cart() {
                           >
                             {t("Remove")}
                           </button>
-                          <button onClick={() => addToCart(item.id, item.price, category)}>
-                            Add to Cart
-                          </button>
                         </div>
                       </li>
                     ))}

@@ -6,16 +6,16 @@ export function CartProvider({ children }) {
   const [cart, setCart] = useState({});
   const [showCart, setShowCart] = useState(false);
 
-  const addToCart = async (product_id, price, category) => {
+  const addToCart = (name, price, category) => {
     setCart((prevCart) => {
       const categoryItems = prevCart[category] || [];
-      const existingItem = categoryItems.find((item) => item.id === product_id);
+      const existingItem = categoryItems.find((item) => item.name === name);
 
       if (existingItem) {
         return {
           ...prevCart,
           [category]: categoryItems.map((item) =>
-            item.id === product_id
+            item.name === name
               ? {
                   ...item,
                   quantity: item.quantity + 1,
@@ -32,17 +32,17 @@ export function CartProvider({ children }) {
           ...prevCart,
           [category]: [
             ...categoryItems,
-            { product_id, price, quantity: 1, totalPrice: price },
+            { name, price, quantity: 1, totalPrice: price },
           ],
         };
       }
     });
   };
 
-  const removeFromCart = (product_id, category) => {
+  const removeFromCart = (name, category) => {
     setCart((prevCart) => {
       const categoryItems = prevCart[category] || [];
-      const updatedItems = categoryItems.filter((item) => item.id !== product_id);
+      const updatedItems = categoryItems.filter((item) => item.name !== name);
       
       if (updatedItems.length === 0) {
         const { [category]: _, ...rest } = prevCart;
@@ -56,12 +56,12 @@ export function CartProvider({ children }) {
     });
   };
 
-  const decrementFromCart = (product_id, category) => {
+  const decrementFromCart = (name, category) => {
     setCart((prevCart) => {
       const categoryItems = prevCart[category] || [];
       const updatedItems = categoryItems
         .map((item) =>
-          item.id === product_id
+          item.name === name
             ? {
                 ...item,
                 quantity: item.quantity - 1,
