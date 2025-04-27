@@ -6,7 +6,9 @@ export const AuthProvider = ({ children }) => {
   const [userName, setUserName] = useState(null);
 
   useEffect(() => {
-    fetch("/api/getUserName")
+    fetch(
+      "http://localhost/ProyectoClase/final-project/pages/api/getUserName.php"
+    )
       .then((response) => response.json())
       .then((data) => {
         if (data.user_name) {
