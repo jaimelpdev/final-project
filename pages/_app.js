@@ -1,11 +1,14 @@
 import { appWithTranslation } from 'next-i18next';
 import { CartProvider } from '../context/CartContext';
+import { AuthProvider } from "../context/AuthContext";
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
   return (
     <CartProvider>
-      <Component {...pageProps} />
+      <AuthProvider>
+        <Component {...pageProps} />
+      </AuthProvider>
     </CartProvider>
   );
 }

@@ -1,22 +1,11 @@
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import LanguageSwitcher from "./languageSwitcher";
-import { useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext";
 
 const Header = () => {
+  const { userName, setUserName } = useAuth();
   const { t } = useTranslation("common");
-  const [userName, setUserName] = useState(null);
-
-  useEffect(() => {
-    // Obtenain the user name from the server
-    fetch("/api/getUserName")
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.user_name) {
-          setUserName(data.user_name);
-        }
-      });
-  }, []);
 
   const handleLogout = () => {
     fetch("/api/logout", { method: "POST" })
