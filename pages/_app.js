@@ -5,12 +5,10 @@ import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <CartProvider>
-      <AuthProvider>
-        <Component {...pageProps} />
-      </AuthProvider>
-    </CartProvider>
+    <AuthProvider>
+      <Component {...pageProps} />
+    </AuthProvider>
   );
 }
 
-export default appWithTranslation(MyApp);
+export default MyApp;

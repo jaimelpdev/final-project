@@ -4,13 +4,14 @@ import LanguageSwitcher from "./languageSwitcher";
 import { useAuth } from "../context/AuthContext";
 
 const Header = () => {
-  const { userName, setUserName } = useAuth();
+  const { userName, setUserName } = useAuth(); // Obtain userName and setUserName from AuthContext
   const { t } = useTranslation("common");
+  console.log("Estado de userName:", userName); // Depuración
 
   const handleLogout = () => {
     fetch("/api/logout", { method: "POST" })
       .then(() => {
-        setUserName(null);
+        setUserName(null); // Clear the userName state
         window.location.href = "http://localhost:3000";
       })
       .catch((error) => console.error("Error to logout:", error));
@@ -40,7 +41,7 @@ const Header = () => {
       <div className="header-right">
         <LanguageSwitcher />
         <div className="userSection">
-          {userName ? (
+          {userName ? ( // If authenticated user
             <>
               <span>
                 {t("Welcome")}, {userName}!
@@ -50,6 +51,7 @@ const Header = () => {
               </button>
             </>
           ) : (
+            // If not authenticated user
             <>
               <Link href="http://localhost/ProyectoClase/final-project/pages/sessions/login.php">
                 <button className="loginButton">{t("Log In")}</button>
