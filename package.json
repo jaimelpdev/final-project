@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "i18next": "^24.2.3",
     "next": "15.2.0",
     "next-auth": "^4.24.11",

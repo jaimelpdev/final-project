@@ -1,15 +1,28 @@
-import React, { createContext, useContext, useState, useEffect } from "react"; // Asegúrate de importar useState y useEffect
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [userName, setUserName] = useState(null); // Estado del usuario
+  const [userName, setUserName] = useState(null); // User state
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("userName");
-    if (storedUser) {
-      setUserName(storedUser);
-    }
+    // Verify if the user is logged in when the component mounts
+    const fetchUser = async () => {
+      try {
+        const response = await fetch("/api/getUserName");
+        if (response.ok) {
+          const data = await response.json();
+          setUserName(data.user_name); // Update the user state with the fetched name
+        } else {
+          setUserName(null); // If there are no session, clear the state
+        }
+      } catch (error) {
+        console.error("Error fetching user:", error);
+        setUserName(null);
+      }
+    };
+
+    fetchUser();
   }, []);
 
   const login = (name) => {
@@ -17,9 +30,14 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("userName", name);
   };
 
-  const logout = () => {
-    setUserName(null);
-    localStorage.removeItem("userName");
+  const logout = async () => {
+    try {
+      await fetch("/api/logout", { method: "POST" }); // Call the endpoint to log out
+      setUserName(null);
+      localStorage.removeItem("userName");
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
   };
 
   return (

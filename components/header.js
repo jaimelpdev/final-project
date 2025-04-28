@@ -6,7 +6,6 @@ import { useAuth } from "../context/AuthContext";
 const Header = () => {
   const { userName, setUserName } = useAuth(); // Obtain userName and setUserName from AuthContext
   const { t } = useTranslation("common");
-  console.log("Estado de userName:", userName); // Depuración
 
   const handleLogout = () => {
     fetch("/api/logout", { method: "POST" })
@@ -53,7 +52,7 @@ const Header = () => {
           ) : (
             // If not authenticated user
             <>
-              <Link href="http://localhost/ProyectoClase/final-project/pages/sessions/login.php">
+              <Link href="http://localhost/ProyectoClase/final-project/pages/sessions/login_form.html">
                 <button className="loginButton">{t("Log In")}</button>
               </Link>
               <Link href="http://localhost/ProyectoClase/final-project/pages/sessions/register.php">

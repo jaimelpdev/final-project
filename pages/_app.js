@@ -6,9 +6,11 @@ import '../styles/globals.css';
 function MyApp({ Component, pageProps }) {
   return (
     <AuthProvider>
-      <Component {...pageProps} />
+      <CartProvider>
+        <Component {...pageProps} />
+      </CartProvider>
     </AuthProvider>
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);
