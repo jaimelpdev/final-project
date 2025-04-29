@@ -18,7 +18,7 @@ if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
     // Empty the session cart
     $_SESSION['cart'] = [];
 
-    echo "Thank you for your purchase. Your order will be processed shortly and sent to your email.";
+    echo "Thank you for your purchase. Check your email " . $_SESSION['user_email'] . " for further instructions soon.";
 } else {
     echo "Your cart is empty.";
 }

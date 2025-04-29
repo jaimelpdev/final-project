@@ -4,16 +4,26 @@ import LanguageSwitcher from "./languageSwitcher";
 import { useAuth } from "../context/AuthContext";
 
 const Header = () => {
-  const { userName, setUserName } = useAuth(); // Obtain userName and setUserName from AuthContext
+  const { userName } = useAuth(); // Obtain userName from AuthContext
   const { t } = useTranslation("common");
 
-  const handleLogout = () => {
-    fetch("/api/logout", { method: "POST" })
-      .then(() => {
-        setUserName(null); // Clear the userName state
-        window.location.href = "http://localhost:3000";
-      })
-      .catch((error) => console.error("Error to logout:", error));
+  const handleLogout = async () => {
+    try {
+      const response = await fetch('/api/logout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+  
+      window.location.reload();
+    } catch (error) {
+      console.error('Failed to logout:', error);
+    }
   };
 
   return (
