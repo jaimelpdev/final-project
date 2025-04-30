@@ -7,24 +7,10 @@ const Header = () => {
   const { userName } = useAuth(); // Obtain userName from AuthContext
   const { t } = useTranslation("common");
 
-  const handleLogout = async () => {
-    try {
-      const response = await fetch('/api/logout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-  
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
-      }
-  
-      window.location.reload();
-    } catch (error) {
-      console.error('Failed to logout:', error);
-    }
-  };
+    const handleLogout = async () => {
+      await fetch("/api/logout", { method: "POST" });
+      window.location.href = "/"; // Redirige al usuario a la página principal
+    };
 
   return (
     <header className="header">

@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await fetch("/api/logout", { method: "POST" }); // Call the endpoint to log out
+      await fetch("/api/logout", { method: "POST" });
       setUserName(null);
       localStorage.removeItem("userName");
     } catch (error) {
