@@ -1,33 +1,48 @@
 <?php
 session_start();
-require_once '../../lib/db.php';
+require_once '../../lib/config.php'; // Asegúrate de que este archivo contiene la conexión a la base de datos
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
-    $product_id = intval($_POST['product_id']);
-    $user_id = intval($_SESSION['user_id']);
-
-    // Verify if the product exists in the database
-    $productCheckQuery = "SELECT id FROM products WHERE id = ?";
-    $productStmt = $conn->prepare($productCheckQuery);
-    $productStmt->bind_param("i", $product_id);
-    $productStmt->execute();
-    $productResult = $productStmt->get_result();
-
-    if ($productResult->num_rows === 0) {
-        echo "The product doesn't exists.";
-        exit;
-    }
-
-    // Insert the product into the cart
-    $query = "INSERT INTO carts (user_id, product_id) VALUES (?, ?)";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("ii", $user_id, $product_id);
-
-    if ($stmt->execute()) {
-        // Update the session cart array
-        $_SESSION['cart'][] = $product_id;
-        echo "Product added to cart successfully.";
-    } else {
-        echo "Error to add the product to cart: " . $stmt->error;
-    }
+// Verificar si el usuario está autenticado
+if (!isset($_SESSION['user_id'])) {
+    die("Debes iniciar sesión para añadir productos al carrito.");
 }
+
+// Obtener el ID del usuario y el producto
+$user_id = $_SESSION['user_id'];
+$product_id = $_POST['product_id']; // Asegúrate de que este dato se envíe desde el formulario
+
+// Verificar si el producto ya está en el carrito
+$queryCheck = "SELECT id FROM carts WHERE user_id = ? AND product_id = ?";
+$stmtCheck = $conn->prepare($queryCheck);
+$stmtCheck->bind_param("ii", $user_id, $product_id);
+$stmtCheck->execute();
+$stmtCheck->store_result();
+
+if ($stmtCheck->num_rows > 0) {
+    echo "El producto ya está en el carrito.";
+    exit;
+}
+
+// Insertar el producto en la tabla carts
+$query = "INSERT INTO carts (user_id, product_id) VALUES (?, ?)";
+$stmt = $conn->prepare($query);
+
+if ($stmt) {
+    $stmt->bind_param("ii", $user_id, $product_id);
+    if ($stmt->execute()) {
+        // Actualizar el carrito en la sesión
+        if (!isset($_SESSION['cart'])) {
+            $_SESSION['cart'] = [];
+        }
+        $_SESSION['cart'][] = $product_id;
+
+        echo "Producto añadido al carrito correctamente.";
+    } else {
+        echo "Error al añadir el producto al carrito: " . $stmt->error;
+    }
+    $stmt->close();
+} else {
+    echo "Error en la preparación de la consulta: " . $conn->error;
+}
+
+$conn->close();
