@@ -1,5 +1,5 @@
 <?php
-require_once '../../lib/config.php'; // Conexión a la base de datos
+require_once '../../lib/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $email = $_POST['email'];
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['user_name'] = $name;
     $_SESSION['user_email'] = $email;
 
-    // Create a cookie with the user's name (optional)
+    // Create a cookie with the user's name
     setcookie("user_name", $name, time() + 3600, "/", "", false, true); // 1 hour expiration
 
     // Recuperate the user's cart items from the database
@@ -40,9 +40,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: http://localhost:3000");
     exit;
   } else {
-    // Show error message if the email or password is incorrect
-    echo "Email or password incorrect.";
+    echo "<script>alert('Credentials incorrects. Please try again.');</script>";
   }
 
   $stmt->close();
 }
+?>
+
+<!-- Log in form -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="../../styles/auth.css" />
+  </head>
+  <body>
+    <form action="login.php" method="POST">
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" required />
+      <br />
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required />
+      <br />
+      <button type="submit">Login</button>
+    </form>
+  </body>
+</html>

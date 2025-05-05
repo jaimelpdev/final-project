@@ -1,5 +1,6 @@
 import { useCart } from "../context/CartContext";
 import { useTranslation } from "next-i18next";
+import { useState, useEffect } from "react";
 
 export default function Cart() {
   const {
@@ -14,6 +15,25 @@ export default function Cart() {
     getTotal,
   } = useCart();
   const { t } = useTranslation("common");
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [customerEmail, setCustomerEmail] = useState("");
+
+  // Obtain the user's email from the backend
+  useEffect(() => {
+    fetch("/api/getUserEmail.php")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.email) {
+          setCustomerEmail(data.email);
+        }
+      })
+      .catch((error) => console.error("Error fetching user email:", error));
+  }, []);
+
+  const handleCheckout = () => {
+    checkout();
+    setShowSuccessPopup(true); // Show the success popup
+  };
 
   return (
     <>
@@ -80,7 +100,7 @@ export default function Cart() {
                   <button className="empty-cart" onClick={emptyCart}>
                     {t("Empty Cart")}
                   </button>
-                  <button className="checkout" onClick={checkout}>
+                  <button className="checkout" onClick={handleCheckout}>
                     {t("Checkout")}
                   </button>
                 </div>
@@ -91,6 +111,21 @@ export default function Cart() {
           )}
         </div>
       </div>
+
+      {/* Success popup */}
+      {showSuccessPopup && (
+        <div className="success-popup">
+          <div className="popup-content">
+            <span className="success-icon">✔</span>
+            <h2>Payment Successful</h2>
+            <p>
+              The payment has been successfully processed. Further instructions
+              will be sent to your email: <strong>{customerEmail}</strong>.
+            </p>
+            <button onClick={() => setShowSuccessPopup(false)}>Close</button>
+          </div>
+        </div>
+      )}
     </>
   );
 }

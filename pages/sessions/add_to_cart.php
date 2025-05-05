@@ -1,8 +1,13 @@
 <?php
 session_start();
-require_once '../../lib/config.php'; 
+require_once '../../lib/config.php'; // Include the database connection
 
 // Verify if the request method is POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    die("Invalid request method. Please use POST to add products to the cart.");
+}
+
+
 if (!isset($_SESSION['user_id'])) {
     die("Debes iniciar sesión para añadir productos al carrito.");
 }
