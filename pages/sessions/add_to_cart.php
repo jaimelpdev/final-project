@@ -1,17 +1,17 @@
 <?php
 session_start();
-require_once '../../lib/config.php'; // Asegúrate de que este archivo contiene la conexión a la base de datos
+require_once '../../lib/config.php'; 
 
-// Verificar si el usuario está autenticado
+// Verify if the request method is POST
 if (!isset($_SESSION['user_id'])) {
     die("Debes iniciar sesión para añadir productos al carrito.");
 }
 
-// Obtener el ID del usuario y el producto
+// Obtain the product ID from the POST request
 $user_id = $_SESSION['user_id'];
-$product_id = $_POST['product_id']; // Asegúrate de que este dato se envíe desde el formulario
+$product_id = $_POST['product_id'];
 
-// Verificar si el producto ya está en el carrito
+// Verify if the product ID is valid
 $queryCheck = "SELECT id FROM carts WHERE user_id = ? AND product_id = ?";
 $stmtCheck = $conn->prepare($queryCheck);
 $stmtCheck->bind_param("ii", $user_id, $product_id);
@@ -23,14 +23,14 @@ if ($stmtCheck->num_rows > 0) {
     exit;
 }
 
-// Insertar el producto en la tabla carts
+// Insert the product into the cart
 $query = "INSERT INTO carts (user_id, product_id) VALUES (?, ?)";
 $stmt = $conn->prepare($query);
 
 if ($stmt) {
     $stmt->bind_param("ii", $user_id, $product_id);
     if ($stmt->execute()) {
-        // Actualizar el carrito en la sesión
+        //Update the session cart
         if (!isset($_SESSION['cart'])) {
             $_SESSION['cart'] = [];
         }
