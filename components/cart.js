@@ -16,23 +16,34 @@ export default function Cart() {
   } = useCart();
   const { t } = useTranslation("common");
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [showErrorPopup, setShowErrorPopup] = useState(false); // Estado para el popup de error
   const [customerEmail, setCustomerEmail] = useState("");
 
-  // Obtain the user's email from the backend
+  // Obtener el email del usuario desde el backend
   useEffect(() => {
     fetch("/api/getUserEmail.php")
       .then((response) => response.json())
       .then((data) => {
         if (data.email) {
           setCustomerEmail(data.email);
+        } else {
+          setCustomerEmail(null); // No hay sesión iniciada
         }
       })
-      .catch((error) => console.error("Error fetching user email:", error));
+      .catch((error) => {
+        console.error("Error fetching user email:", error);
+        setCustomerEmail(null); // Error al obtener el email
+      });
   }, []);
 
   const handleCheckout = () => {
+    if (!customerEmail) {
+      // Si no hay email, mostrar el popup de error
+      setShowErrorPopup(true);
+      return;
+    }
     checkout();
-    setShowSuccessPopup(true); // Show the success popup
+    setShowSuccessPopup(true); // Mostrar el popup de éxito
   };
 
   return (
@@ -123,6 +134,18 @@ export default function Cart() {
               will be sent to your email: <strong>{customerEmail}</strong>.
             </p>
             <button onClick={() => setShowSuccessPopup(false)}>Close</button>
+          </div>
+        </div>
+      )}
+
+      {/* Error popup */}
+      {showErrorPopup && (
+        <div className="error-popup">
+          <div className="popup-content">
+            <span className="error-icon">✖</span>
+            <h2>Payment Failed</h2>
+            <p>You must be logged in to complete the payment process.</p>
+            <button onClick={() => setShowErrorPopup(false)}>Close</button>
           </div>
         </div>
       )}
