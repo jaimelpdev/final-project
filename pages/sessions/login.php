@@ -1,5 +1,10 @@
 <?php
 require_once '../../lib/config.php';
+require_once '../../lib/translations.php';
+require_once 'db_connection.php';
+
+$lang = 'es';
+$translations = loadTranslations($lang);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $email = $_POST['email'];
@@ -40,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: http://localhost:3000");
     exit;
   } else {
-    echo "<script>alert('Credentials incorrects. Please try again.');</script>";
+    echo "<script>alert('" . t('Credentials incorrect. Please try again.', $translations) . "');</script>";
   }
 
   $stmt->close();
@@ -50,21 +55,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!-- Log in form -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
-    <link rel="stylesheet" href="../../styles/auth.css" />
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><?php echo t('Log in', $translations); ?></title>
+  <link rel="stylesheet" href="../../styles/auth.css" />
+</head>
+
+<body>
+  <div class="login-container">
+    <h1 style="color: white;"><?php echo t('Log in', $translations); ?></h1>
     <form action="login.php" method="POST">
-      <label for="email">Email:</label>
+      <label for="email"><?php echo t('Email', $translations); ?>:</label>
       <input type="email" name="email" id="email" required />
-      <br />
-      <label for="password">Password:</label>
+      <label for="password"><?php echo t('Password', $translations); ?>:</label>
       <input type="password" name="password" id="password" required />
-      <br />
-      <button type="submit">Login</button>
+      <button type="submit"><?php echo t('Log in', $translations); ?></button>
     </form>
-  </body>
+  </div>
+</body>
+
 </html>

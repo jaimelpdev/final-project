@@ -111,6 +111,23 @@
   "Remove": "Eliminar",
   "Empty Cart": "Vaciar Carrito",
   "Checkout": "Pagar",
-  "Your cart is empty": "Tu carrito está vacío"
+  "Your cart is empty": "Tu carrito está vacío",
 
+  "__comment": "Encabezado",
+  "Log In": "Iniciar Sesión",
+  "Sign Up": "Registrarse",
+  "Sign up": "Registrarse",
+  "Logout": "Cerrar Sesión",
+  "Profile": "Perfil",
+
+  "__comment": "Página de inicio de sesión y registro",
+  "Log in": "Iniciar Sesión",
+  "Sign up": "Registrarse",
+  "Name": "Nombre",
+  "Email": "Correo Electrónico",
+  "Password": "Contraseña",
+  "Submit": "Enviar",
+  "The email is already registered. Please use a different one.": "El correo ya está registrado. Por favor, usa uno diferente.",
+  "Error registering the user": "Error al registrar al usuario",
+  "Credentials incorrect. Please try again.": "Credenciales incorrectas. Por favor, inténtalo de nuevo."
 }

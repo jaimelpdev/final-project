@@ -1,36 +1,34 @@
 <?php
 session_start();
+require_once '../../lib/translations.php';
+require_once 'db_connection.php';
+
+$lang = 'es';
+$translations = loadTranslations($lang);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    $conn = new mysqli('localhost', 'root', '', 'my_database');
-
-    $checkEmailQuery = "SELECT id FROM users WHERE email = ?";
-    $stmt = $conn->prepare($checkEmailQuery);
+    $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        echo "The email is already registered. Please use a different one.";
+        echo "<script>alert('" . t('The email is already registered. Please use a different one.', $translations) . "');</script>";
     } else {
-        $insertQuery = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
-        $stmt = $conn->prepare($insertQuery);
+        $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
         $stmt->bind_param("sss", $name, $email, $password);
 
         if ($stmt->execute()) {
-
-            header("Location: http://localhost:3000");
+            echo "<script>alert('" . t('Registration successful', $translations) . "');</script>";
+            header("Location: login.php");
         } else {
-            echo "Error registering the user: " . $stmt->error;
+            echo "<script>alert('" . t('Error registering the user', $translations) . "');</script>";
         }
     }
-
-    $stmt->close();
-    $conn->close();
 }
 ?>
 
@@ -40,20 +38,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign up</title>
+    <title><?php echo t('Sign up', $translations); ?></title>
     <link rel="stylesheet" href="../../styles/auth.css">
 </head>
 
 <body>
-    <form method="POST" action="register.php">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit">Sign up</button>
-    </form>
+    <div class="register-container">
+        <h1 style="color: white;"><?php echo t('Sign up', $translations); ?></h1>
+        <form action="register.php" method="POST">
+            <label for="name"><?php echo t('Name', $translations); ?>:</label>
+            <input type="text" name="name" id="name" required>
+            <label for="email"><?php echo t('Email', $translations); ?>:</label>
+            <input type="email" name="email" id="email" required>
+            <label for="password"><?php echo t('Password', $translations); ?>:</label>
+            <input type="password" name="password" id="password" required>
+            <button type="submit"><?php echo t('Sign up', $translations); ?></button>
+        </form>
+    </div>
 </body>
 
 </html>

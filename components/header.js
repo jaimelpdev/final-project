@@ -44,7 +44,7 @@ const Header = () => {
           {userName ? ( // If authenticated user
             <>
               <span>
-                {userName}, {t("Has logged in")}
+                {t("Profile")}: {userName}
               </span>
               <button onClick={handleLogout} className="logoutButton">
                 {t("Log Out")}
@@ -57,7 +57,7 @@ const Header = () => {
                 <button className="loginButton">{t("Log In")}</button>
               </Link>
               <Link href="http://localhost/ProyectoClase/final-project/pages/sessions/register.php">
-                <button className="signupButton">{t("Sign In")}</button>
+                <button className="signupButton">{t("Sign Up")}</button>
               </Link>
             </>
           )}
