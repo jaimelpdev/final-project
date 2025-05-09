@@ -16,12 +16,11 @@ export default function Cart() {
     getTotal,
   } = useCart();
   const { t } = useTranslation("common");
-  const { userName } = useAuth(); // Obtén el estado del usuario desde el contexto
+  const { userName } = useAuth();
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
-  const [showErrorPopup, setShowErrorPopup] = useState(false); // State for error popup
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [customerEmail, setCustomerEmail] = useState("");
 
-  // Obtain the user email from the server
   useEffect(() => {
     fetch("/api/getUserEmail.php")
       .then((response) => response.json())
@@ -29,28 +28,26 @@ export default function Cart() {
         if (data.email) {
           setCustomerEmail(data.email);
         } else {
-          setCustomerEmail(null); // No email found
+          setCustomerEmail(null);
         }
       })
       .catch((error) => {
         console.error("Error fetching user email:", error);
-        setCustomerEmail(null); // Error to fetch email
       });
   }, []);
 
   const handleCheckout = () => {
     if (!userName) {
-      // Si no hay usuario, mostrar el popup de error
       setShowErrorPopup(true);
       return;
     }
 
     try {
-      checkout(); // Llama a la función síncrona
-      setShowSuccessPopup(true); // Mostrar el popup de éxito
+      checkout();
+      setShowSuccessPopup(true);
     } catch (error) {
       console.error("Error during checkout:", error);
-      setShowErrorPopup(true); // Mostrar el popup de error en caso de fallo
+      setShowErrorPopup(true);
     }
   };
 
@@ -75,9 +72,7 @@ export default function Cart() {
             <>
               {Object.entries(cart).map(([category, items]) => (
                 <div key={category} className="cart-category">
-                  <h3>
-                    {typeof category === "object" ? category.name : t(category)}
-                  </h3>
+                  <h3>{t(category)}</h3>
                   <ul className="cart-items">
                     {items.map((item, index) => (
                       <li key={index}>
@@ -114,7 +109,9 @@ export default function Cart() {
                 </div>
               ))}
               <div className="cart-footer">
-                <p className="cart-total">Total: ${getTotal()}</p>
+                <p className="cart-total">
+                  {t("Total")}: ${getTotal()}
+                </p>
                 <div className="cart-buttons">
                   <button className="empty-cart" onClick={emptyCart}>
                     {t("Empty Cart")}
@@ -136,12 +133,16 @@ export default function Cart() {
         <div className="success-popup">
           <div className="popup-content">
             <span className="success-icon">✔</span>
-            <h2>Payment Successful</h2>
+            <h2>{t("Order Successful")}</h2>
             <p>
-              The payment has been successfully processed. Further instructions
-              will be sent to your email.
+              {t(
+                "The order has been successfully processed. Further instructions will be sent to your email address to process with the payment:"
+              )}{" "}
+              <b>{customerEmail ? customerEmail : t("No email found")}</b>.
             </p>
-            <button onClick={() => setShowSuccessPopup(false)}>Close</button>
+            <button onClick={() => setShowSuccessPopup(false)}>
+              {t("Close")}
+            </button>
           </div>
         </div>
       )}
@@ -151,9 +152,13 @@ export default function Cart() {
         <div className="error-popup">
           <div className="popup-content">
             <span className="error-icon">✖</span>
-            <h2>Payment Failed</h2>
-            <p>You must be logged in to complete the payment process.</p>
-            <button onClick={() => setShowErrorPopup(false)}>Close</button>
+            <h2>{t("Order Failed")}</h2>
+            <p>
+              {t("You must be logged in to complete the process of the order.")}
+            </p>
+            <button onClick={() => setShowErrorPopup(false)}>
+              {t("Close")}
+            </button>
           </div>
         </div>
       )}

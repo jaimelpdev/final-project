@@ -129,5 +129,12 @@
   "Submit": "Enviar",
   "The email is already registered. Please use a different one.": "El correo ya está registrado. Por favor, usa uno diferente.",
   "Error registering the user": "Error al registrar al usuario",
-  "Credentials incorrect. Please try again.": "Credenciales incorrectas. Por favor, inténtalo de nuevo."
+  "Credentials incorrect. Please try again.": "Credenciales incorrectas. Por favor, inténtalo de nuevo.",
+
+  "__comment": "Popup de éxito y error",
+  "Order Successful": "Pedido Exitoso",
+  "The order has been successfully processed. Further instructions will be sent to your email address to process with the payment:": "El pedido ha sido procesado con éxito. Las instrucciones adicionales serán enviadas a tu correo electrónico para procesar el pago.",
+  "Order Failed": "Pedido Fallido",
+  "You must be logged in to complete the process of the order.": "Debes estar registrado para completar el proceso del pedido.",
+  "Close": "Cerrar"
 }
