@@ -32,9 +32,9 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await fetch("/api/logout", { method: "POST" });
-      setUserName(null);
-      localStorage.removeItem("userName");
+      await fetch("/api/logout", { method: "POST" }); // Call the logout API
+      setUserName(null); // Clear the user state
+      localStorage.removeItem("userName"); // Remove any stored data in localStorage
     } catch (error) {
       console.error("Error logging out:", error);
     }
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }) => {
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error("useAuth debe ser usado dentro de un AuthProvider");
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 };

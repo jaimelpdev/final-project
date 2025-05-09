@@ -1,16 +1,21 @@
+import React from "react";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import LanguageSwitcher from "./languageSwitcher";
 import { useAuth } from "../context/AuthContext";
 
 const Header = () => {
-  const { userName } = useAuth(); // Obtain userName from AuthContext
+  const { userName, logout } = useAuth(); // Obtain the userName and logout function from the AuthContext
   const { t } = useTranslation("common");
 
-    const handleLogout = async () => {
-      await fetch("/api/logout", { method: "POST" });
-      window.location.href = "/"; // Redirige al usuario a la página principal
-    };
+  const handleLogout = async () => {
+    try {
+      await logout(); // Call the logout function from the AuthContext
+      window.location.href = "/"; // Redirect to the home page after logout
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
 
   return (
     <header className="header">
@@ -39,7 +44,7 @@ const Header = () => {
           {userName ? ( // If authenticated user
             <>
               <span>
-                {t("Welcome")}, {userName}!
+                {userName}, {t("Has logged in")}
               </span>
               <button onClick={handleLogout} className="logoutButton">
                 {t("Log Out")}

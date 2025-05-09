@@ -1,6 +1,7 @@
 import { useCart } from "../context/CartContext";
 import { useTranslation } from "next-i18next";
 import { useState, useEffect } from "react";
+import { useAuth } from "../context/AuthContext";
 
 export default function Cart() {
   const {
@@ -15,11 +16,12 @@ export default function Cart() {
     getTotal,
   } = useCart();
   const { t } = useTranslation("common");
+  const { userName } = useAuth(); // Obtén el estado del usuario desde el contexto
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
-  const [showErrorPopup, setShowErrorPopup] = useState(false); // Estado para el popup de error
+  const [showErrorPopup, setShowErrorPopup] = useState(false); // State for error popup
   const [customerEmail, setCustomerEmail] = useState("");
 
-  // Obtener el email del usuario desde el backend
+  // Obtain the user email from the server
   useEffect(() => {
     fetch("/api/getUserEmail.php")
       .then((response) => response.json())
@@ -27,23 +29,29 @@ export default function Cart() {
         if (data.email) {
           setCustomerEmail(data.email);
         } else {
-          setCustomerEmail(null); // No hay sesión iniciada
+          setCustomerEmail(null); // No email found
         }
       })
       .catch((error) => {
         console.error("Error fetching user email:", error);
-        setCustomerEmail(null); // Error al obtener el email
+        setCustomerEmail(null); // Error to fetch email
       });
   }, []);
 
   const handleCheckout = () => {
-    if (!customerEmail) {
-      // Si no hay email, mostrar el popup de error
+    if (!userName) {
+      // Si no hay usuario, mostrar el popup de error
       setShowErrorPopup(true);
       return;
     }
-    checkout();
-    setShowSuccessPopup(true); // Mostrar el popup de éxito
+
+    try {
+      checkout(); // Llama a la función síncrona
+      setShowSuccessPopup(true); // Mostrar el popup de éxito
+    } catch (error) {
+      console.error("Error during checkout:", error);
+      setShowErrorPopup(true); // Mostrar el popup de error en caso de fallo
+    }
   };
 
   return (
@@ -131,7 +139,7 @@ export default function Cart() {
             <h2>Payment Successful</h2>
             <p>
               The payment has been successfully processed. Further instructions
-              will be sent to your email: <strong>{customerEmail}</strong>.
+              will be sent to your email.
             </p>
             <button onClick={() => setShowSuccessPopup(false)}>Close</button>
           </div>

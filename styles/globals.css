@@ -568,7 +568,8 @@ button:hover {
   margin-right: 400px;
 }
 
-.success-popup {
+.success-popup,
+.error-popup {
   position: fixed;
   top: 0;
   left: 0;
@@ -587,82 +588,35 @@ button:hover {
   border-radius: 8px;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.success-icon {
-  font-size: 3rem;
-  color: green;
-  margin-bottom: 1rem;
-}
-
-.popup-content h2 {
-  margin-bottom: 1rem;
-  color: #333;
-}
-
-.popup-content p {
-  margin-bottom: 1.5rem;
-  color: #555;
-}
-
-.popup-content button {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.popup-content button:hover {
-  background: #0056b3;
-}
-
-/* Estilos para el popup de éxito */
-.success-popup,
-.error-popup {
-  position: fixed; /* Fijo en la pantalla */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000; /* Asegura que esté por encima de otros elementos */
-}
-
-.popup-content {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   max-width: 400px;
   width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.success-icon,
+.error-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
 }
 
 .success-icon {
-  font-size: 3rem;
   color: green;
-  margin-bottom: 1rem;
 }
 
 .error-icon {
-  font-size: 3rem;
   color: red;
-  margin-bottom: 1rem;
 }
 
 .popup-content h2 {
-  margin-bottom: 1rem;
+  margin: 0;
   color: #333;
 }
 
 .popup-content p {
-  margin-bottom: 1.5rem;
+  margin: 0;
   color: #555;
 }
 
@@ -674,6 +628,7 @@ button:hover {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: 0.5rem;
 }
 
 .popup-content button:hover {
