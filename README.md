@@ -51,22 +51,13 @@ Follow these steps to install and run the project on your local machine:
    npm install
    ```
 
-4. Configure the environment variables:
-
-   - Create a `.env.local` file in the root of the project.
-   - Add the following variables (modify them according to your setup):
-     ```
-     DATABASE_URL=your-database-url
-     NEXT_PUBLIC_API_KEY=your-api-key
-     ```
-
-5. Start the development server:
+4. Start the development server:
 
    ```bash
    npm run dev
    ```
 
-6. Open the application in your browser:
+5. Open the application in your browser:
    ```
    http://localhost:3000
    ```
