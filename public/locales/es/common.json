@@ -1,5 +1,5 @@
 {
-  "__comment": "Pagina de inicio",
+  "__comment": "Home page",
   "Computers": "Ordenadores",
   "Notebooks": "Portátiles",
   "Components": "Componentes",
@@ -18,7 +18,7 @@
   "Enjoy fast shipping, excellent customer service, and a wide range of products to choose from. Your satisfaction is our priority.": "Disfruta de envíos rápidos, excelente servicio al cliente y una amplia gama de productos para elegir. Tu satisfacción es nuestra prioridad.",
   "Join our community of tech enthusiasts and discover why ByteMasters is the go-to destination for all your computing needs.": "Únete a nuestra comunidad de entusiastas de la tecnología y descubre por qué ByteMasters es el destino preferido para todas tus necesidades informáticas.",
 
-  "__comment": "Páginas de los dispositivos",
+  "__comment": "Device pages",
   "Brand": "Marca",
   "Model": "Modelo",
   "- Please select -": "- Por favor selecciona -",
@@ -30,7 +30,7 @@
   "Graphics": "Gráficos",
   "Add to Cart": "Añadir al Carrito",
 
-  "__comment": "Descripciones de los ordenadores",
+  "__comment": "Computer descriptions",
   "Inspiron 3880 Description": "El Dell Inspiron 3880 es un escritorio confiable conocido por su potente rendimiento y versatilidad. Es ideal para usuarios que necesitan una solución informática confiable tanto para el trabajo como para el entretenimiento.",
   "Pavilion TP01 Description": "El HP Pavilion TP01 es un escritorio versátil diseñado para el uso diario. Ofrece un rendimiento sólido y una gama de características adecuadas tanto para el trabajo como para el entretenimiento.",
   "IdeaCentre 5 Description": "El Lenovo IdeaCentre 5 es un escritorio elegante y potente ideal para el hogar y la oficina. Combina rendimiento y estilo, lo que lo convierte en una excelente opción para diversas tareas.",
@@ -53,7 +53,7 @@
   "ROG Strix GA35DX Description": "El ASUS ROG Strix GA35DX es un escritorio para juegos de primera categoría con un rendimiento inigualable. Está diseñado para jugadores que necesitan un sistema potente y confiable para juegos y entretenimiento.",
   "Predator Orion 3000 Description": "El Acer Predator Orion 3000 es un escritorio para juegos con un rendimiento excepcional. Es adecuado para jugadores que necesitan un sistema de alto rendimiento para juegos y entretenimiento.",
 
-  "__comment": "Descripciones de los portátiles",
+  "__comment": "Notebook descriptions",
   "MacBook Air Description": "El Apple MacBook Air es un portátil ligero y portátil conocido por su diseño elegante, larga duración de batería y rendimiento confiable. Es ideal para usuarios que necesitan una solución informática potente y portátil.",
   "MacBook Air M1 Description": "El Apple MacBook Air M1 es un portátil ligero y portátil conocido por su diseño elegante, larga duración de batería y potente chip M1. Es ideal para usuarios que necesitan una solución informática potente y portátil.",
   "MacBook Pro Description": "El Apple MacBook Pro es un portátil de alto rendimiento conocido por su diseño elegante, hardware potente y características avanzadas. Es ideal para profesionales y creativos que buscan una solución informática confiable y potente.",
@@ -75,7 +75,7 @@
   "ROG Zephyrus G14 Description": "El ASUS ROG Zephyrus G14 es un portátil para juegos conocido por su hardware potente, diseño compacto y pantalla de alta frecuencia de actualización. Es adecuado para jugadores que necesitan un portátil de alto rendimiento para juegos y entretenimiento.",
   "TUF Gaming A15 Description": "El ASUS TUF Gaming A15 es un portátil para juegos conocido por su construcción duradera, rendimiento potente y pantalla de alta frecuencia de actualización. Es adecuado para jugadores que necesitan un portátil confiable y de alto rendimiento para juegos y entretenimiento.",
 
-  "__comment": "Página de componentes para ordenadores",
+  "__comment": "Computer components page",
   "Processors": "Procesadores",
   "Available CPUs": "Procesadores Disponibles",
   "Graphics Cards": "Tarjetas Gráficas",
@@ -98,29 +98,29 @@
   "Available Fans": "Ventiladores Disponibles",
   "Type": "Tipo",
 
-  "__comment": "Tipos de cajas",
+  "__comment": "Case types",
   "Mid Tower": "Torre Mediana",
   "Open Frame": "Marco Abierto",
 
-  "__comment": "Tipos de refrigeración",
+  "__comment": "Cooling types",
   "Air Cooler": "Refrigeración por Aire",
   "Liquid Cooler": "Refrigeración Líquida",
 
-  "__comment": "Parte de la tienda",
+  "__comment": "Store section",
   "Shopping Cart": "Carrito de Compras",
   "Remove": "Eliminar",
   "Empty Cart": "Vaciar Carrito",
   "Checkout": "Pagar",
   "Your cart is empty": "Tu carrito está vacío",
 
-  "__comment": "Encabezado",
+  "__comment": "Header",
   "Log In": "Iniciar Sesión",
   "Sign Up": "Registrarse",
   "Sign up": "Registrarse",
   "Logout": "Cerrar Sesión",
   "Profile": "Perfil",
 
-  "__comment": "Página de inicio de sesión y registro",
+  "__comment": "Login and registration page",
   "Log in": "Iniciar Sesión",
   "Sign up": "Registrarse",
   "Name": "Nombre",
@@ -131,7 +131,7 @@
   "Error registering the user": "Error al registrar al usuario",
   "Credentials incorrect. Please try again.": "Credenciales incorrectas. Por favor, inténtalo de nuevo.",
 
-  "__comment": "Popup de éxito y error",
+  "__comment": "Success and error popups",
   "Order Successful": "Pedido Exitoso",
   "The order has been successfully processed. Further instructions will be sent to your email address to process with the payment:": "El pedido ha sido procesado con éxito. Las instrucciones adicionales serán enviadas a tu correo electrónico para procesar el pago.",
   "Order Failed": "Pedido Fallido",

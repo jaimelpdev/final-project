@@ -1,58 +1,63 @@
 <?php
+// Required files for configuration, translations, and database connection
 require_once '../../lib/config.php';
 require_once '../../lib/translations.php';
 require_once 'db_connection.php';
 
+// Set default language and load translations
 $lang = 'es';
 $translations = loadTranslations($lang);
 
+// Handle login form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $email = $_POST['email'];
-  $password = $_POST['password'];
+    // Get user input from form
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-  // Prepare the SQL statement to prevent SQL injection
-  $stmt = $conn->prepare("SELECT id, name, password FROM users WHERE email = ?");
-  $stmt->bind_param("s", $email);
-  $stmt->execute();
-  $stmt->store_result();
-  $stmt->bind_result($id, $name, $hashed_password);
+    // Prepare the SQL statement to prevent SQL injection
+    $stmt = $conn->prepare("SELECT id, name, password FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
+    $stmt->bind_result($id, $name, $hashed_password);
 
-  // Verify if the user exists and the password is correct
-  if ($stmt->fetch() && password_verify($password, $hashed_password)) {
-    // Save user data in session variables
-    session_start();
-    $_SESSION['user_id'] = $id;
-    $_SESSION['user_name'] = $name;
-    $_SESSION['user_email'] = $email;
+    // Verify if the user exists and the password is correct
+    if ($stmt->fetch() && password_verify($password, $hashed_password)) {
+        // Initialize session and store user data
+        session_start();
+        $_SESSION['user_id'] = $id;
+        $_SESSION['user_name'] = $name;
+        $_SESSION['user_email'] = $email;
 
-    // Create a cookie with the user's name
-    setcookie("user_name", $name, time() + 3600, "/", "", false, true); // 1 hour expiration
+        // Set secure cookie with user's name (1 hour expiration)
+        setcookie("user_name", $name, time() + 3600, "/", "", false, true);
 
-    // Recuperate the user's cart items from the database
-    $cartQuery = "SELECT product_id FROM carts WHERE user_id = ?";
-    $cartStmt = $conn->prepare($cartQuery);
-    $cartStmt->bind_param("i", $id);
-    $cartStmt->execute();
-    $result = $cartStmt->get_result();
+        // Retrieve user's cart items from database
+        $cartQuery = "SELECT product_id FROM carts WHERE user_id = ?";
+        $cartStmt = $conn->prepare($cartQuery);
+        $cartStmt->bind_param("i", $id);
+        $cartStmt->execute();
+        $result = $cartStmt->get_result();
 
-    // Save the cart items in the session
-    $_SESSION['cart'] = [];
-    while ($row = $result->fetch_assoc()) {
-      $_SESSION['cart'][] = $row['product_id'];
+        // Initialize cart in session and populate with user's items
+        $_SESSION['cart'] = [];
+        while ($row = $result->fetch_assoc()) {
+            $_SESSION['cart'][] = $row['product_id'];
+        }
+
+        // Redirect to main page after successful login
+        header("Location: http://localhost:3000");
+        exit;
+    } else {
+        // Display error message for invalid credentials
+        echo "<script>alert('" . t('Credentials incorrect. Please try again.', $translations) . "');</script>";
     }
 
-    // Redirect to the main page or dashboard
-    header("Location: http://localhost:3000");
-    exit;
-  } else {
-    echo "<script>alert('" . t('Credentials incorrect. Please try again.', $translations) . "');</script>";
-  }
-
-  $stmt->close();
+    $stmt->close();
 }
 ?>
 
-<!-- Log in form -->
+<!-- Login form HTML structure -->
 <!DOCTYPE html>
 <html lang="en">
 

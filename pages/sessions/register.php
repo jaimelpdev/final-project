@@ -1,16 +1,22 @@
 <?php
+// Start session for user authentication
 session_start();
 require_once '../../lib/translations.php';
 require_once 'db_connection.php';
 
+// Set default language and load translations
 $lang = 'es';
 $translations = loadTranslations($lang);
 
+// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Sanitize and prepare user input
     $name = $_POST['name'];
     $email = $_POST['email'];
+    // Hash password for security
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
+    // Check if email already exists
     $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -19,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt->num_rows > 0) {
         echo "<script>alert('" . t('The email is already registered. Please use a different one.', $translations) . "');</script>";
     } else {
+        // Insert new user into database
         $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
         $stmt->bind_param("sss", $name, $email, $password);
 

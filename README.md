@@ -62,6 +62,32 @@ Follow these steps to install and run the project on your local machine:
    http://localhost:3000
    ```
 
+### Server Requirements
+
+Before running the application, make sure you have:
+
+1. **MySQL Server**:
+   - Install and run a local MySQL server (e.g., through XAMPP)
+   - Default port: 3306
+   - Create a database named `my_database` automatically
+
+2. **Apache Server**:
+   - Install and run a local Apache server (e.g., through XAMPP)
+   - Default port: 80
+
+### Requisitos del Servidor
+
+Antes de ejecutar la aplicación, asegúrate de tener:
+
+1. **Servidor MySQL**:
+   - Instalar y ejecutar un servidor MySQL local (por ejemplo, a través de XAMPP)
+   - Puerto por defecto: 3306
+   - Crear una base de datos llamada `bytemasters` automáticamente
+
+2. **Servidor Apache**:
+   - Instalar y ejecutar un servidor Apache local (por ejemplo, a través de XAMPP)
+   - Puerto por defecto: 80
+
 ---
 
 ## Usage

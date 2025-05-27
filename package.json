@@ -3,14 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
     "lint": "next lint"
   },
   "dependencies": {
     "cookie-parser": "^1.4.7",
     "i18next": "^24.2.3",
+    "mysql2": "^3.9.2",
     "next": "15.2.0",
     "next-auth": "^4.24.11",
     "next-i18next": "^15.4.2",

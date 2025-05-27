@@ -1,17 +1,18 @@
 <?php
+// Database configuration
 $servername = "localhost";
 $username = "root";
 $password = "";
 $database = "my_database";
 
-// Crear la conexión
+// Create connection
 $conn = new mysqli($servername, $username, $password, $database);
 
-// Verificar la conexión
+// Check connection
 if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 
-// Establecer el conjunto de caracteres
+// Set character set to UTF-8 for proper encoding
 $conn->set_charset("utf8");
 ?>
