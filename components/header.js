@@ -53,10 +53,10 @@ const Header = () => {
           ) : (
             // If not authenticated user
             <>
-              <Link href="http://localhost/ProyectoClase/final-project/pages/sessions/login.php">
+              <Link href="http://localhost/final-project/pages/sessions/login.php">
                 <button className="loginButton">{t("Log In")}</button>
               </Link>
-              <Link href="http://localhost/ProyectoClase/final-project/pages/sessions/register.php">
+              <Link href="http://localhost/final-project/pages/sessions/register.php">
                 <button className="signupButton">{t("Sign Up")}</button>
               </Link>
             </>

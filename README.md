@@ -68,7 +68,7 @@ Before running the application, make sure you have:
 
 1. **MySQL Server**:
    - Install and run a local MySQL server (e.g., through XAMPP)
-   - Default port: 3306
+   - Default port: 3308
    - Create a database named `my_database` automatically
 
 2. **Apache Server**:
@@ -81,7 +81,7 @@ Antes de ejecutar la aplicación, asegúrate de tener:
 
 1. **Servidor MySQL**:
    - Instalar y ejecutar un servidor MySQL local (por ejemplo, a través de XAMPP)
-   - Puerto por defecto: 3306
+   - Puerto por defecto: 3308
    - Crear una base de datos llamada `bytemasters` automáticamente
 
 2. **Servidor Apache**:

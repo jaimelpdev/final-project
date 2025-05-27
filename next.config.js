@@ -15,7 +15,7 @@ module.exports = {
       {
         // Rewrite API requests to the PHP backend
         source: "/api/:path*",
-        destination: "http://localhost/ProyectoFinal/final-project/pages/api/:path*",
+        destination: "http://localhost/final-project/pages/api/:path*",
       },
     ];
   },

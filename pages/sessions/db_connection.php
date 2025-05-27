@@ -1,11 +1,11 @@
 <?php
 // Database configuration
-$servername = "localhost";
+$servername = "127.0.0.1:3308";
 $username = "root";
 $password = "";
 $database = "my_database";
 
-// Create connection
+// Create connection with additional options
 $conn = new mysqli($servername, $username, $password, $database);
 
 // Check connection
