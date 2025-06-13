@@ -33,7 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         setcookie("user_name", $name, time() + 3600, "/", "", false, true);
 
         // Retrieve user's cart items from database
-        $cartQuery = "SELECT product_id FROM carts WHERE user_id = ?";
+        $cartQuery = "SELECT ci.product_id, ci.quantity 
+                     FROM carts c 
+                     JOIN cart_items ci ON c.id = ci.cart_id 
+                     WHERE c.user_id = ?";
         $cartStmt = $conn->prepare($cartQuery);
         $cartStmt->bind_param("i", $id);
         $cartStmt->execute();
@@ -42,7 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Initialize cart in session and populate with user's items
         $_SESSION['cart'] = [];
         while ($row = $result->fetch_assoc()) {
-            $_SESSION['cart'][] = $row['product_id'];
+            // Añadir el producto tantas veces como su cantidad
+            for ($i = 0; $i < $row['quantity']; $i++) {
+                $_SESSION['cart'][] = $row['product_id'];
+            }
         }
 
         // Redirect to main page after successful login
